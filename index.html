@@ -36,6 +36,3957 @@ box-sizing: border-box;
 
 body{
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: linear-gradient(135deg,#667eea 0%, #764ba2 100%);
+min-height: 100vh;
+padding: 20px;
+color: var(--dark);
+}
+
+.container{
+max-width: 1400px;
+margin: 0 auto;
+}
+
+.header{
+text-align: center;
+margin-bottom: 30px;
+padding: 20px;
+background: white;
+border-radius: var(--border-radius);
+box-shadow: var(--shadow);
+position: relative;
+}
+
+.header h1{
+color: var(--primary);
+font-size: 2.5rem;
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p{
+color: var(--gray);
+font-size: 1.1rem;
+}
+
+#langSelector {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    color: var(--dark);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#langSelector:focus {
+    outline: 2px solid var(--primary);
+}
+
+.main-grid{
+display: grid;
+grid-template-columns: 2fr 1fr;
+gap: 20px;
+margin-bottom: 20px;
+}
+
+@media(max-width: 992px){
+.main-grid{
+grid-template-columns: 1fr;
+}
+}
+
+.game-section{
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+.selected-numbers{
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
+box-shadow: var(--shadow);
+}
+
+.selected-numbers h3{
+color: var(--primary);
+margin-bottom: 15px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.selected-display{
+min-height: 60px;
+border: 2px dashed #e5e7eb;
+border-radius: 8px;
+padding: 15px;
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+align-items: center;
+justify-content: center;
+}
+
+.number-selection-section{
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
+box-shadow: var(--shadow);
+}
+
+.number-selection-header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 15px;
+}
+
+.number-selection-header h3{
+color: var(--primary);
+}
+
+.selection-mode-controls{
+display: flex;
+gap: 10px;
+}
+
+.selection-mode-btn{
+width: 60px;
+height: 60px;
+border: 4px solid;
+border-radius: 50%;
+cursor: pointer;
+transition: all 0.3s ease;
+font-size: 1.8rem;
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.selection-mode-btn:hover{
+transform: scale(1.05);
+box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.selection-mode-btn[data-mode="cold"]{
+border-color:#2196f3;
+background:#e3f2fd;
+color:#1976d2;
+}
+
+.selection-mode-btn[data-mode="hot"]{
+border-color:#f44336;
+background:#ffebee;
+color:#d32f2f;
+}
+
+.selection-mode-btn[data-mode="excluded"]{
+border-color: #9e9e9e;
+background: #f5f5f5;
+color: #616161;
+}
+
+.selection-mode-btn.active{
+transform: scale(1.15);
+box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+animation: pulse-selection 2s infinite;
+}
+
+.selection-mode-btn.active[data-mode="cold"]{
+border-color:#1976d2;
+background:#2196f3;
+color: white;
+box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
+}
+
+.selection-mode-btn.active[data-mode="hot"]{
+border-color:#d32f2f;
+background:#f44336;
+color: white;
+box-shadow: 0 8px 25px rgba(244, 67, 54, 0.4);
+}
+
+.selection-mode-btn.active[data-mode="excluded"]{
+border-color: #616161;
+background: #9e9e9e;
+color: white;
+box-shadow: 0 8px 25px rgba(158, 158, 158, 0.4);
+}
+
+@keyframes pulse-selection{
+0%, 100%{ transform: scale(1.15);}
+50%{ transform: scale(1.25);}
+}
+
+#randomBtn:hover {
+    transform: rotate(360deg) scale(1.05);
+}
+
+#clearBtn {
+    transition: all 0.3s ease;
+}
+
+#clearBtn:hover {
+    transform: scale(1.1);
+}
+
+#clearBtn.has-selections {
+    background: var(--danger-light);
+    border-color: var(--danger-light);
+    color: white;
+}
+
+/* Nueva matriz 10x5 */
+.numbers-grid{
+display: grid;
+grid-template-columns: repeat(10, 1fr);
+grid-template-rows: repeat(5, 1fr);
+gap: 8px;
+max-width: 500px;
+margin: 0 auto;
+}
+
+@media(max-width: 768px){
+.numbers-grid{
+grid-template-columns: repeat(10, 1fr);
+gap: 6px;
+}
+}
+
+.number-ball{
+width: 100%;
+aspect-ratio: 1;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+cursor: pointer;
+transition: var(--transition);
+border: 3px solid #e0e0e0;
+background: linear-gradient(135deg,#fafafa, #f0f0f0);
+position: relative;
+font-size: 1.1rem;
+}
+
+.number-ball:hover{
+transform: scale(1.1);
+box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.number-ball.selected{
+background: linear-gradient(135deg,#ffd700, #ffa000);
+border-color:#ff8f00;
+color: white;
+transform: scale(1.15);
+box-shadow: 0 8px 25px rgba(255,193,7,0.4);
+animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%, 100%{ transform: scale(1.15);}
+50%{ transform: scale(1.25);}
+}
+
+.number-ball.hot{
+border-color:#ff5722;
+background: linear-gradient(135deg,#ffebee, #ffcdd2);
+color:#d32f2f;
+box-shadow: 0 0 10px rgba(255, 87, 34, 0.3);
+}
+
+.number-ball.cold{
+border-color:#03a9f4;
+background: linear-gradient(135deg,#e1f5fe, #b3e5fc);
+color:#0277bd;
+box-shadow: 0 0 10px rgba(3, 169, 244, 0.3);
+}
+
+.hot-indicator,.cold-indicator{
+position: absolute;
+top:-5px;
+right:-5px;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+font-size: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+}
+
+.hot-indicator{
+background:#ff5722;
+color: white;
+}
+
+.cold-indicator{
+background:#03a9f4;
+color: white;
+}
+
+.number-ball.excluded{
+background:#757575;
+border-color:#424242;
+color: white;
+opacity: 0.6;
+cursor: not-allowed;
+}
+
+.number-ball.random-pick {
+    background: var(--warning);
+    color: white;
+    transform: scale(1.1);
+    border-color: var(--warning);
+}
+
+.number-ball.consejo-pick {
+    background: var(--mystic);
+    color: white;
+    transform: scale(1.1);
+    border-color: var(--mystic-light);
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.4);
+    animation: mysticPulse 2s infinite;
+}
+
+@keyframes mysticPulse {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.4);
+    transform: scale(1.1);
+  }
+  50% { 
+    box-shadow: 0 0 25px rgba(147, 51, 234, 0.8);
+    transform: scale(1.15);
+  }
+}
+
+.stats-section{
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
+box-shadow: var(--shadow);
+}
+
+.stats-section h3{
+color: var(--primary);
+margin-bottom: 15px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.stats-grid{
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 15px;
+}
+
+@media(max-width: 576px){
+.stats-grid{
+grid-template-columns: 1fr;
+}
+}
+
+.stat-item{
+padding: 12px;
+background:#f9fafb;
+border-radius: 8px;
+border-left: 4px solid var(--primary);
+}
+
+.stat-label{
+font-size: 0.9rem;
+color: var(--gray);
+margin-bottom: 5px;
+}
+
+.stat-value{
+font-weight: bold;
+color: var(--dark);
+}
+
+.stat-value.valid{
+color:#4caf50;
+text-shadow: 0 0 10px rgba(76,175,80,0.3);
+}
+
+.stat-value.invalid{
+color: var(--danger);
+}
+
+.sidebar{
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+.panel{
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
+box-shadow: var(--shadow);
+}
+
+.panel h3{
+color: var(--primary);
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.strategy-buttons{
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.strategy-btn{
+padding: 15px 10px;
+background:#f3f4f6;
+border-radius: 8px;
+text-align: center;
+cursor: pointer;
+transition: var(--transition);
+border: 2px solid transparent;
+}
+
+.strategy-btn:hover{
+transform: translateY(-2px);
+border-color: var(--primary);
+}
+
+.strategy-btn.active{
+background: var(--primary);
+color: white;
+border-color: var(--primary);
+}
+
+.strategy-btn[data-strategy="consejo"] {
+background: linear-gradient(135deg, var(--mystic), var(--mystic-light));
+color: white;
+}
+
+.strategy-btn[data-strategy="consejo"]:hover {
+background: linear-gradient(135deg, var(--mystic-light), var(--mystic));
+transform: translateY(-2px) scale(1.05);
+box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
+}
+
+.strategy-btn[data-strategy="consejo"].active {
+background: linear-gradient(135deg, var(--mystic), var(--mystic-light));
+border-color: var(--mystic);
+box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+}
+
+.input-row{
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 15px;
+}
+
+.input-row label{
+font-weight: bold;
+color: var(--dark);
+min-width: 60px;
+}
+
+.input-row input{
+width: 80px;
+padding: 8px 12px;
+border: 2px solid #e5e7eb;
+border-radius: 6px;
+font-size: 1rem;
+}
+
+.input-row input:focus{
+outline: none;
+border-color: var(--primary);
+}
+
+.input-row input.error {
+border-color: var(--danger);
+background-color: #fef2f2;
+}
+
+.input-row span{
+color: var(--gray);
+}
+
+.number-option{
+padding: 10px;
+background:#f3f4f6;
+border-radius: 6px;
+text-align: center;
+cursor: pointer;
+transition: var(--transition);
+}
+
+.number-option:hover{
+background: var(--primary);
+color: white;
+}
+
+.number-option.active{
+background: var(--primary);
+color: white;
+}
+
+.generate-btn{
+width: 100%;
+padding: 15px;
+background: linear-gradient(135deg, var(--primary), var(--secondary));
+color: white;
+border: none;
+border-radius: 8px;
+font-size: 1.1rem;
+font-weight: bold;
+cursor: pointer;
+transition: var(--transition);
+margin: 20px 0;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+}
+
+.generate-btn:hover{
+transform: translateY(-2px);
+box-shadow: var(--shadow-lg);
+}
+
+.generate-btn.consejo-mode {
+background: linear-gradient(135deg, var(--mystic), var(--mystic-light));
+animation: mysticGlow 3s infinite alternate;
+}
+
+@keyframes mysticGlow {
+  0% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3); }
+  100% { box-shadow: 0 0 30px rgba(147, 51, 234, 0.8); }
+}
+
+.ticket{
+background: linear-gradient(135deg,#fff8e1, #ffecb3);
+border: 2px dashed #ff9800;
+border-radius: 15px;
+padding: 20px;
+margin-top: 20px;
+display: none;
+animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn{
+0%{ transform: translateY(20px); opacity: 0;}
+100%{ transform: translateY(0); opacity: 1;}
+}
+
+.ticket.show{
+display: block;
+}
+
+.ticket-header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 15px;
+padding-bottom: 10px;
+border-bottom: 2px solid #e5e7eb;
+text-align: center;
+color:#e65100;
+}
+
+.ticket-header h4{
+color: var(--primary);
+font-size: 1.1rem;
+}
+
+.ticket-header p{
+color: var(--gray);
+font-size: 0.9rem;
+}
+
+.ticket-combination{
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 12px;
+background: white;
+border-radius: 10px;
+margin-bottom: 12px;
+font-family:'Courier New', monospace;
+font-weight: bold;
+}
+
+.ticket-number{
+width: 30px;
+height: 30px;
+background: var(--primary);
+color: white;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 15px;
+font-size: 0.9rem;
+flex-shrink: 0;
+}
+
+.ticket-actions{
+display: flex;
+gap: 10px;
+margin-top: 15px;
+}
+
+.ticket-btn{
+flex: 1;
+padding: 10px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 5px;
+transition: var(--transition);
+}
+
+.ticket-btn:disabled {
+    background: var(--gray);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.save-btn{
+background: linear-gradient(135deg,#2196f3, #1976d2);
+color: white;
+}
+
+.share-btn{
+background: linear-gradient(135deg,#4caf50, #388e3c);
+color: white;
+}
+
+.ticket-btn:hover:not(:disabled){
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.filters-panel{
+display: flex;
+flex-direction: column;
+gap: 15px;
+transition: var(--transition);
+}
+
+.filters-panel.disabled {
+opacity: 0.3;
+pointer-events: none;
+filter: grayscale(100%);
+}
+
+.filter-group{
+padding: 15px;
+background:#f9fafb;
+border-radius: 8px;
+border-left: 4px solid var(--primary);
+}
+
+.filter-title{
+font-weight: bold;
+color: var(--dark);
+margin-bottom: 10px;
+font-size: 0.95rem;
+}
+
+.range-control{
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.range-control input{
+width: 80px;
+padding: 8px 12px;
+border: 2px solid #e5e7eb;
+border-radius: 6px;
+font-size: 1rem;
+}
+
+.range-control input:focus{
+outline: none;
+border-color: var(--primary);
+}
+
+.range-control input.error {
+border-color: var(--danger);
+background-color: #fef2f2;
+}
+
+.range-control span{
+color: var(--gray);
+}
+
+.filter-options{
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-top: 10px;
+}
+
+.filter-chip{
+padding: 8px 15px;
+background:#f3f4f6;
+border-radius: 20px;
+font-size: 0.85rem;
+cursor: pointer;
+transition: var(--transition);
+border: 2px solid transparent;
+}
+
+.filter-chip:hover{
+border-color: var(--primary);
+}
+
+.filter-chip.active{
+border-color:#4caf50;
+background:#e8f5e8;
+color:#2e7d32;
+}
+
+.validation-error{
+background: #ffebee;
+border: 1px solid #f44336;
+color: #c62828;
+padding: 8px 12px;
+border-radius: 8px;
+font-size: 0.85rem;
+margin-top: 5px;
+display: none;
+}
+
+.validation-error.show{
+display: block;
+}
+
+.consejo-message {
+background: linear-gradient(135deg, var(--mystic), var(--mystic-light));
+color: white;
+padding: 15px;
+border-radius: 8px;
+margin-bottom: 20px;
+text-align: center;
+font-weight: bold;
+box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+display: none;
+animation: fadeInMystic 1s ease-in-out;
+}
+
+@keyframes fadeInMystic {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.saved-tickets-section{
+background: white;
+padding: 20px;
+border-radius: var(--border-radius);
+box-shadow: var(--shadow);
+}
+
+.saved-tickets-section h3{
+color: var(--primary);
+margin-bottom: 20px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.saved-tickets{
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+.saved-ticket-item{
+border: 2px solid #e5e7eb;
+border-radius: 8px;
+padding: 15px;
+}
+
+.saved-ticket-header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 15px;
+}
+
+.saved-ticket-date{
+font-weight: bold;
+color: var(--dark);
+font-size: 0.95rem;
+}
+
+.saved-ticket-actions{
+display: flex;
+gap: 10px;
+}
+
+.validate{
+background: var(--success);
+color: white;
+border: none;
+padding: 6px 12px;
+border-radius: 6px;
+cursor: pointer;
+font-size: 0.85rem;
+}
+
+.toggle-btn{
+background: var(--primary);
+color: white;
+border: none;
+width: 30px;
+height: 30px;
+border-radius: 50%;
+cursor: pointer;
+font-size: 1.2rem;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.saved-combinations{
+margin-top: 10px;
+padding: 10px;
+background:#f9fafb;
+border-radius: 6px;
+display: none;
+}
+
+.saved-combination{
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 10px;
+padding: 8px;
+background: white;
+border-radius: 4px;
+margin-bottom: 5px;
+}
+
+.hit-count {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--success);
+    background-color: #e8f9f1;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.saved-combination-number{
+width: 20px;
+height: 20px;
+background: var(--primary);
+color: white;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.7rem;
+font-weight: bold;
+flex-shrink: 0;
+}
+
+.saved-combination-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Loading */
+.loading {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f4f6;
+  border-top: 5px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Modal con scroll */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.modal-header h3 {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.modal-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+#validationResults {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 300px;
+  margin-bottom: 20px;
+  padding-right: 10px;
+}
+
+#validationResults::-webkit-scrollbar {
+  width: 8px;
+}
+
+#validationResults::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#validationResults::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+#validationResults::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-btn.cancel {
+  background: #f3f4f6;
+  color: var(--dark);
+}
+
+.modal-btn.confirm {
+  background: var(--success);
+  color: white;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.success {
+  background: var(--success);
+}
+
+.toast.error {
+  background: var(--danger);
+}
+
+.toast.warning {
+  background: var(--warning);
+}
+
+.toast.mystic {
+  background: linear-gradient(135deg, var(--mystic), var(--mystic-light));
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+}
+
+/* Diálogo del Consejo */
+.consejo-dialog-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1500;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.consejo-dialog-content {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 2px solid var(--mystic);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  box-shadow: 0 0 40px rgba(147, 51, 234, 0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: consejoAppear 1s ease-in-out;
+}
+
+@keyframes consejoAppear {
+  from { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.consejo-header {
+  background: linear-gradient(135deg, var(--mystic), var(--mystic-light));
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.consejo-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+}
+
+.consejo-message {
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 12px;
+  animation: messageAppear 0.5s ease-in-out;
+  position: relative;
+}
+
+@keyframes messageAppear {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.consejo-message.sage {
+  background: linear-gradient(135deg, #2d1b69, #3b2584);
+  border-left: 4px solid #8b5cf6;
+  color: #e0e7ff;
+}
+
+.consejo-message.mystic {
+  background: linear-gradient(135deg, #1e3a8a, #3730a3);
+  border-left: 4px solid #60a5fa;
+  color: #dbeafe;
+}
+
+.consejo-message.ancient {
+  background: linear-gradient(135deg, #7c2d12, #9a3412);
+  border-left: 4px solid #fb923c;
+  color: #fed7aa;
+}
+
+.consejo-message.oracle {
+  background: linear-gradient(135deg, #14532d, #166534);
+  border-left: 4px solid #4ade80;
+  color: #dcfce7;
+}
+
+.consejo-message.final {
+  background: linear-gradient(135deg, var(--mystic), var(--mystic-light));
+  border: 2px solid #fbbf24;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.5);
+}
+
+.consejo-speaker {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.consejo-text {
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.consejo-number-reveal {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+  border-left: 3px solid #fbbf24;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.consejo-footer {
+  background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+  padding: 15px 20px;
+  text-align: center;
+  border-top: 1px solid var(--mystic);
+}
+
+.consejo-close-btn {
+  background: linear-gradient(135deg, var(--mystic), var(--mystic-light));
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.consejo-close-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.4);
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+  </style>
+
+  
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <select id="langSelector">
+        <option value="es">🇪🇸 Español</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="de">🇩🇪 Deutsch</option>
+      </select>
+      <h1>🎲 DataLotto49</h1>
+      <p data-translate-key="app_subtitle">Generador Inteligente de Combinaciones Ganadoras</p>
+    </header>
+
+    <div class="main-grid">
+      <div class="game-section">
+        <div class="selected-numbers">
+          <h3 data-translate-key="selected_numbers_title">🎯 Números Seleccionados</h3>
+          <div class="selected-display" id="selectedDisplay">
+            <div style="color:#666; font-style: italic;" data-translate-key="select_up_to_6">Selecciona hasta 6 números</div>
+          </div>
+        </div>
+
+        <div class="number-selection-section">
+          <div class="number-selection-header">
+            <h3 data-translate-key="number_selection_title">Selección de números</h3>
+            <div class="selection-mode-controls">
+              <button class="selection-mode-btn active" data-mode="cold" title="Marcar/Desmarcar números fríos" data-translate-title-key="tooltip_cold">
+                <span class="icon">❄</span>
+              </button>
+              <button class="selection-mode-btn" data-mode="hot" title="Marcar/Desmarcar números calientes" data-translate-title-key="tooltip_hot">
+                <span class="icon">🔥</span>
+              </button>
+              <button class="selection-mode-btn" data-mode="excluded" title="Marcar/Desmarcar números excluidos" data-translate-title-key="tooltip_excluded">
+                <span class="icon">🚫</span>
+              </button>
+              <button class="selection-mode-btn" id="randomBtn" title="Seleccionar 6 números al azar" data-translate-title-key="tooltip_random">
+                <span class="icon">🎲</span>
+              </button>
+              <button class="selection-mode-btn" id="clearBtn" title="Limpiar todas las selecciones" data-translate-title-key="tooltip_clear">
+                <span class="icon">🗑️</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="numbers-grid" id="numbersGrid">
+            </div>
+        </div>
+
+        <div class="stats-section">
+          <h3 data-translate-key="stats_title">📊 Estadísticas en Tiempo Real</h3>
+          <div class="stats-grid" id="statsGrid">
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_total_sum">Suma Total</div>
+              <div class="stat-value" id="statSuma">-</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_even_odd">Par/Impar</div>
+              <div class="stat-value" id="statParImpar">-</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_low_high">Bajos/Altos</div>
+              <div class="stat-value" id="statBajosAltos">-</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_decades">Decenas</div>
+              <div class="stat-value" id="statDecenas">-</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_decade_groups">Agrup. Decenas</div>
+              <div class="stat-value" id="statAgrupDecenas">-</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_consecutive">Consecutivos</div>
+              <div class="stat-value" id="statConsecutivos">-</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_digit_sum">Suma Dígitos</div>
+              <div class="stat-value" id="statSumaDigitos">-</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_primes">Números Primos</div>
+              <div class="stat-value" id="statPrimos">-</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_deviation">Desviación</div>
+              <div class="stat-value" id="statDesviacion">-</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label" data-translate-key="stat_patterns">Patrones</div>
+              <div class="stat-value" id="statPatrones">-</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="panel">
+          <h3 data-translate-key="strategy_title">♟ Estrategia de Juego</h3>
+          <div class="strategy-buttons">
+            <div class="strategy-btn active" data-strategy="simple">
+              <div style="font-size: 1.5rem; margin-bottom: 5px;">🎯</div>
+              <div data-translate-key="strategy_simple">Simple</div>
+            </div>
+            <div class="strategy-btn" data-strategy="winning">
+              <div style="font-size: 1.5rem; margin-bottom: 5px;">🏆</div>
+              <div data-translate-key="strategy_winning">Estrategia Ganadora</div>
+            </div>
+            <div class="strategy-btn" data-strategy="multiple">
+              <div style="font-size: 1.5rem; margin-bottom: 5px;">🎰</div>
+              <div data-translate-key="strategy_multiple">Múltiple</div>
+            </div>
+            <div class="strategy-btn" data-strategy="consejo">
+              <div style="font-size: 1.5rem; margin-bottom: 5px;">🔮</div>
+              <div data-translate-key="strategy_consejo">Modo Consejo</div>
+            </div>
+          </div>
+
+          <div class="consejo-message" id="consejoMessage">
+            🧙‍♂️ ¡El Consejo de Expertos ha sido convocado! Los filtros están desactivados. Los algoritmos más avanzados tomarán control... 🎯
+          </div>
+
+          <div class="multiple-options" id="winningOptions" style="display: none;">
+            <div class="input-row">
+              <label data-translate-key="label_generate">Generar:</label>
+              <input type="number" id="generateCount" value="100" min="10" max="1000">
+              <span data-translate-key="span_combinations">combinaciones</span>
+            </div>
+            <div class="input-row">
+              <label data-translate-key="label_play">Jugar:</label>
+              <input type="number" id="playCount" value="10" min="1" max="100">
+              <span data-translate-key="span_best">mejores</span>
+            </div>
+          </div>
+
+          <div class="multiple-numbers-options" id="multipleNumbersOptions" style="display: none;">
+            <div class="numbers-select">
+              <label data-translate-key="label_how_many_numbers">¿Cuántos números quieres seleccionar?</label>
+              <div class="number-option active" data-numbers="7" data-translate-key="option_7_numbers">7 números</div>
+              <div class="number-option" data-numbers="8" data-translate-key="option_8_numbers">8 números</div>
+              <div class="number-option" data-numbers="9" data-translate-key="option_9_numbers">9 números</div>
+              <div class="number-option" data-numbers="10" data-translate-key="option_10_numbers">10 números</div>
+              <div class="number-option" data-numbers="11" data-translate-key="option_11_numbers">11 números</div>
+            </div>
+          </div>
+
+          <button class="generate-btn" id="generateBtn"><span data-translate-key="btn_generate">🍀 Generar Combinación</span></button>
+
+          <div class="ticket" id="ticket">
+            <div class="ticket-header">
+              <h4 data-translate-key="ticket_title">🎫 Tu Boleto Ganador</h4>
+              <p id="ticketDate"></p>
+            </div>
+            <div id="ticketCombinations"></div>
+            <div class="ticket-actions">
+              <button class="ticket-btn save-btn" id="saveBtn"><span data-translate-key="btn_save">💾 Guardar Boleto</span></button>
+              <button class="ticket-btn share-btn" id="shareBtn"><span data-translate-key="btn_share">📤 Compartir</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="filtersPanel">
+          <h3 data-translate-key="filters_title">⚙ Filtros Inteligentes</h3>
+          <div class="filters-panel" id="filtersContainer">
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_total_sum">🎯 Suma Total</div>
+              <div class="range-control">
+                <input type="number" id="sumMin" value="121" min="21" max="279">
+                <span data-translate-key="span_to">a</span>
+                <input type="number" id="sumMax" value="190" min="21" max="279">
+              </div>
+              <div class="validation-error" id="sumError">El valor mínimo no puede ser mayor que el máximo</div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_even_odd">⚖ Par/Impar</div>
+              <div class="filter-options" id="parImparOptions">
+                <div class="filter-chip" data-value="6/0">6/0</div>
+                <div class="filter-chip" data-value="5/1">5/1</div>
+                <div class="filter-chip active" data-value="4/2">4/2</div>
+                <div class="filter-chip active" data-value="3/3">3/3</div>
+                <div class="filter-chip" data-value="2/4">2/4</div>
+                <div class="filter-chip" data-value="1/5">1/5</div>
+                <div class="filter-chip" data-value="0/6">0/6</div>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_low_high">📊 Bajos/Altos(1-25/26-49)</div>
+              <div class="filter-options" id="bajosAltosOptions">
+                <div class="filter-chip" data-value="6/0">6/0</div>
+                <div class="filter-chip" data-value="5/1">5/1</div>
+                <div class="filter-chip active" data-value="4/2">4/2</div>
+                <div class="filter-chip active" data-value="3/3">3/3</div>
+                <div class="filter-chip active" data-value="2/4">2/4</div>
+                <div class="filter-chip" data-value="1/5">1/5</div>
+                <div class="filter-chip" data-value="0/6">0/6</div>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_decade_groups">🔢 Agrupación por Decenas</div>
+              <div class="filter-options" id="agrupDecenasOptions">
+                <div class="filter-chip active" data-value="6">6</div>
+                <div class="filter-chip active" data-value="5/1">5/1</div>
+                <div class="filter-chip active" data-value="4/2">4/2</div>
+                <div class="filter-chip active" data-value="4/1/1">4/1/1</div>
+                <div class="filter-chip active" data-value="3/3">3/3</div>
+                <div class="filter-chip active" data-value="3/2/1">3/2/1</div>
+                <div class="filter-chip active" data-value="3/1/1/1">3/1/1/1</div>
+                <div class="filter-chip active" data-value="2/2/2">2/2/2</div>
+                <div class="filter-chip active" data-value="2/2/1/1">2/2/1/1</div>
+                <div class="filter-chip active" data-value="2/1/1/1/1">2/1/1/1/1</div>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_consecutive">🔗 Números Consecutivos</div>
+              <div class="filter-options" id="consecutivosOptions">
+                <div class="filter-chip" data-value="6">6</div>
+                <div class="filter-chip" data-value="5/1">5/1</div>
+                <div class="filter-chip" data-value="4/2">4/2</div>
+                <div class="filter-chip" data-value="4/1/1">4/1/1</div>
+                <div class="filter-chip" data-value="3/3">3/3</div>
+                <div class="filter-chip" data-value="3/2/1">3/2/1</div>
+                <div class="filter-chip" data-value="3/1/1/1">3/1/1/1</div>
+                <div class="filter-chip" data-value="2/2/2">2/2/2</div>
+                <div class="filter-chip" data-value="2/2/1/1">2/2/1/1</div>
+                <div class="filter-chip active" data-value="2/1/1/1/1">2/1/1/1/1</div>
+                <div class="filter-chip active" data-value="1/1/1/1/1/1">1/1/1/1/1/1</div>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_exclude_endings">⌫ Excluir Terminaciones</div>
+              <div class="filter-options" id="terminacionesExcluidasOptions">
+                <div class="filter-chip" data-value="0">*0</div>
+                <div class="filter-chip" data-value="1">*1</div>
+                <div class="filter-chip" data-value="2">*2</div>
+                <div class="filter-chip" data-value="3">*3</div>
+                <div class="filter-chip" data-value="4">*4</div>
+                <div class="filter-chip" data-value="5">*5</div>
+                <div class="filter-chip" data-value="6">*6</div>
+                <div class="filter-chip" data-value="7">*7</div>
+                <div class="filter-chip" data-value="8">*8</div>
+                <div class="filter-chip" data-value="9">*9</div>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_digit_sum">∑ Suma de Dígitos</div>
+              <div class="range-control">
+                <input type="number" id="sumaDigitosMin" value="28" min="21" max="63">
+                <span data-translate-key="span_to_2">a</span>
+                <input type="number" id="sumaDigitosMax" value="45" min="21" max="63">
+              </div>
+              <div class="validation-error" id="sumaDigitosError">El valor mínimo no puede ser mayor que el máximo</div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_primes">🔢 Números Primos</div>
+              <div class="range-control">
+                <span data-translate-key="span_between">Entre</span>
+                <input type="number" id="primosMin" value="1" min="0" max="6">
+                <span data-translate-key="span_and">y</span>
+                <input type="number" id="primosMax" value="3" min="0" max="6">
+                <span data-translate-key="span_primes">primos</span>
+              </div>
+              <div class="validation-error" id="primosError">El valor mínimo no puede ser mayor que el máximo</div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_std_dev">📊 Desviación Estándar</div>
+              <div class="range-control">
+                <input type="number" id="desviacionMin" value="12.0" min="1" max="24" step="0.1">
+                <span data-translate-key="span_to_3">a</span>
+                <input type="number" id="desviacionMax" value="18.0" min="1" max="24" step="0.1">
+              </div>
+              <div class="validation-error" id="desviacionError">El valor mínimo no puede ser mayor que el máximo</div>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-title" data-translate-key="filter_exclude_patterns">🚫 Excluir Patrones</div>
+              <div class="filter-options" id="patronesOptions">
+                <div class="filter-chip" data-value="fibonacci">⌫ Fibonacci</div>
+                <div class="filter-chip" data-value="paresConsecutivos" data-translate-key="pattern_consecutive_evens">⌫ Pares consecutivos</div>
+                <div class="filter-chip" data-value="multiplos" data-translate-key="pattern_multiples">⌫ Múltiplos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="saved-tickets-section">
+      <h3 data-translate-key="saved_tickets_title">🗂 Boletos Guardados</h3>
+      <div class="saved-tickets" id="savedTickets">
+        <div style="color:#666; text-align: center; padding: 20px;" data-translate-key="no_saved_tickets">No tienes boletos guardados</div>
+      </div>
+    </div>
+
+    <div class="loading" id="loadingModal">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <h3 id="loadingText" data-translate-key="loading_generating">Generando combinación...</h3>
+        <p><span data-translate-key="loading_attempts">Intentos</span>: <span id="loadingAttempts">0</span></p>
+      </div>
+    </div>
+
+    <div class="modal" id="validationModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 data-translate-key="modal_validate_title">🔍 Validar Boleto</h3>
+          <p data-translate-key="modal_validate_instructions">Introduce los 6 números ganadores separados por espacios, comas o puntos.</p>
+        </div>
+        <input type="text" class="modal-input" id="winningNumbersInput" placeholder="7, 12. 23 31,42.49" maxlength="23">
+        <div id="validationResults"></div>
+        <div class="modal-actions">
+          <button class="modal-btn cancel" id="cancelValidationBtn" data-translate-key="btn_close">Cerrar</button>
+          <button class="modal-btn confirm" id="confirmValidationBtn" data-translate-key="btn_validate">Validar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal del Diálogo del Consejo -->
+    <div class="consejo-dialog-modal" id="consejoDialogModal">
+      <div class="consejo-dialog-content">
+        <div class="consejo-header">
+          <span data-translate-key="consejo_dialog_title">🎯 Cámara del Consejo de Expertos</span>
+        </div>
+        <div class="consejo-body" id="consejoDialogBody">
+          <!-- Los mensajes del diálogo aparecerán aquí -->
+        </div>
+        <div class="consejo-footer">
+          <button class="consejo-close-btn" id="consejoCloseBtn" data-translate-key="btn_close_dialog">Cerrar Cámara</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script>
+    // Objeto JSON para traducciones
+    const translations = {
+      es: {
+        app_subtitle: "Generador Inteligente de Combinaciones Ganadoras",
+        selected_numbers_title: "🎯 Números Seleccionados",
+        select_up_to_6: "Selecciona hasta 6 números",
+        number_selection_title: "Selección de números",
+        tooltip_cold: "Marcar/Desmarcar números fríos",
+        tooltip_hot: "Marcar/Desmarcar números calientes",
+        tooltip_excluded: "Marcar/Desmarcar números excluidos",
+        tooltip_random: "Seleccionar 6 números al azar",
+        tooltip_clear: "Limpiar todas las selecciones",
+        stats_title: "📊 Estadísticas en Tiempo Real",
+        stat_total_sum: "Suma Total",
+        stat_even_odd: "Par/Impar",
+        stat_low_high: "Bajos/Altos",
+        stat_decades: "Decenas",
+        stat_decade_groups: "Agrup. Decenas",
+        stat_consecutive: "Consecutivos",
+        stat_digit_sum: "Suma Dígitos",
+        stat_primes: "Números Primos",
+        stat_deviation: "Desviación",
+        stat_patterns: "Patrones",
+        strategy_title: "♟ Estrategia de Juego",
+        strategy_simple: "Simple",
+        strategy_winning: "Estrategia Ganadora",
+        strategy_multiple: "Múltiple",
+        strategy_consejo: "Modo Consejo",
+        label_generate: "Generar:",
+        span_combinations: "combinaciones",
+        label_play: "Jugar:",
+        span_best: "mejores",
+        label_how_many_numbers: "¿Cuántos números quieres seleccionar?",
+        option_7_numbers: "7 números",
+        option_8_numbers: "8 números",
+        option_9_numbers: "9 números",
+        option_10_numbers: "10 números",
+        option_11_numbers: "11 números",
+        btn_generate: "🍀 Generar Combinación",
+        btn_generate_consejo: "🔮 Invocar Sabiduría Ancestral",
+        ticket_title: "🎫 Tu Boleto Ganador",
+        btn_save: "💾 Guardar Boleto",
+        btn_share: "📤 Compartir",
+        filters_title: "⚙ Filtros Inteligentes",
+        filter_total_sum: "🎯 Suma Total",
+        span_to: "a",
+        filter_even_odd: "⚖ Par/Impar",
+        filter_low_high: "📊 Bajos/Altos(1-25/26-49)",
+        filter_decade_groups: "🔢 Agrupación por Decenas",
+        filter_consecutive: "🔗 Números Consecutivos",
+        filter_exclude_endings: "⌫ Excluir Terminaciones",
+        filter_digit_sum: "∑ Suma de Dígitos",
+        span_to_2: "a",
+        filter_primes: "🔢 Números Primos",
+        span_between: "Entre",
+        span_and: "y",
+        span_primes: "primos",
+        filter_std_dev: "📊 Desviación Estándar",
+        span_to_3: "a",
+        filter_exclude_patterns: "🚫 Excluir Patrones",
+        pattern_consecutive_evens: "⌫ Pares consecutivos",
+        pattern_multiples: "⌫ Múltiplos",
+        saved_tickets_title: "🗂 Boletos Guardados",
+        no_saved_tickets: "No tienes boletos guardados",
+        loading_generating: "Generando combinación...",
+        loading_consejo: "El Consejo delibera... 🔮",
+        loading_attempts: "Intentos",
+        modal_validate_title: "🔍 Validar Boleto",
+        modal_validate_instructions: "Introduce los 6 números ganadores separados por espacios, comas o puntos.",
+        btn_close: "Cerrar",
+        btn_validate: "Validar",
+        toast_combo_found: "🎉 ¡Combinación inteligente encontrada!",
+        toast_consejo_found: "🔮 ¡El Consejo ha hablado! Sabiduría ancestral revelada",
+        toast_no_combo: "No se encontró combinación válida. Relaja los filtros.",
+        toast_generated_multiple: "¡Generadas {0} combinaciones! Mostrando las {1} mejores.",
+        toast_ticket_saved: "Boleto guardado correctamente",
+        toast_no_ticket_to_save: "No hay boleto para guardar",
+        // Nuevas traducciones para el diálogo del consejo
+        consejo_dialog_title: "🎯 Cámara del Consejo de Expertos",
+        btn_close_dialog: "Cerrar Cámara",
+        dr_prob_speaker: "🎯 Dr. Probabilidad",
+        ia9000_speaker: "🤖 IA-9000", 
+        darwin_speaker: "🧬 Darwin",
+        nash_speaker: "⚖️ Nash",
+        consejo_introduction: "Se congregan los expertos matemáticos en la cámara de deliberación...",
+        consejo_deliberation: "Iniciando análisis algorítmico de los números del destino...",
+        consejo_final_decision: "🌟 DECISIÓN FINAL DEL CONSEJO 🌟",
+      },
+      en: {
+        app_subtitle: "Intelligent Winning Combination Generator",
+        selected_numbers_title: "🎯 Selected Numbers",
+        select_up_to_6: "Select up to 6 numbers",
+        number_selection_title: "Number Selection",
+        tooltip_cold: "Mark/Unmark cold numbers",
+        tooltip_hot: "Mark/Unmark hot numbers",
+        tooltip_excluded: "Mark/Unmark excluded numbers",
+        tooltip_random: "Select 6 random numbers",
+        tooltip_clear: "Clear all selections",
+        stats_title: "📊 Real-Time Statistics",
+        stat_total_sum: "Total Sum",
+        stat_even_odd: "Even/Odd",
+        stat_low_high: "Low/High",
+        stat_decades: "Decades",
+        stat_decade_groups: "Decade Groups",
+        stat_consecutive: "Consecutive",
+        stat_digit_sum: "Digit Sum",
+        stat_primes: "Prime Numbers",
+        stat_deviation: "Deviation",
+        stat_patterns: "Patterns",
+        strategy_title: "♟ Game Strategy",
+        strategy_simple: "Simple",
+        strategy_winning: "Winning Strategy",
+        strategy_multiple: "Multiple",
+        strategy_consejo: "Council Mode",
+        label_generate: "Generate:",
+        span_combinations: "combinations",
+        label_play: "Play:",
+        span_best: "best",
+        label_how_many_numbers: "How many numbers do you want to select?",
+        option_7_numbers: "7 numbers",
+        option_8_numbers: "8 numbers",
+        option_9_numbers: "9 numbers",
+        option_10_numbers: "10 numbers",
+        option_11_numbers: "11 numbers",
+        btn_generate: "🍀 Generate Combination",
+        btn_generate_consejo: "🔮 Invoke Ancient Wisdom",
+        ticket_title: "🎫 Your Winning Ticket",
+        btn_save: "💾 Save Ticket",
+        btn_share: "📤 Share",
+        filters_title: "⚙ Smart Filters",
+        filter_total_sum: "🎯 Total Sum",
+        span_to: "to",
+        filter_even_odd: "⚖ Even/Odd",
+        filter_low_high: "📊 Low/High (1-25/26-49)",
+        filter_decade_groups: "🔢 Decade Grouping",
+        filter_consecutive: "🔗 Consecutive Numbers",
+        filter_exclude_endings: "⌫ Exclude Endings",
+        filter_digit_sum: "∑ Digit Sum",
+        span_to_2: "to",
+        filter_primes: "🔢 Prime Numbers",
+        span_between: "Between",
+        span_and: "and",
+        span_primes: "primes",
+        filter_std_dev: "📊 Standard Deviation",
+        span_to_3: "to",
+        filter_exclude_patterns: "🚫 Exclude Patterns",
+        pattern_consecutive_evens: "⌫ Consecutive evens",
+        pattern_multiples: "⌫ Multiples",
+        saved_tickets_title: "🗂 Saved Tickets",
+        no_saved_tickets: "You have no saved tickets",
+        loading_generating: "Generating combination...",
+        loading_consejo: "The Council deliberates... 🔮",
+        loading_attempts: "Attempts",
+        modal_validate_title: "🔍 Validate Ticket",
+        modal_validate_instructions: "Enter the 6 winning numbers separated by spaces, commas, or periods.",
+        btn_close: "Close",
+        btn_validate: "Validate",
+        toast_combo_found: "🎉 Smart combination found!",
+        toast_consejo_found: "🔮 The Council has spoken! Ancient wisdom revealed",
+        toast_no_combo: "No valid combination found. Loosen the filters.",
+        toast_generated_multiple: "Generated {0} combinations! Showing the best {1}.",
+        toast_ticket_saved: "Ticket saved successfully",
+        toast_no_ticket_to_save: "No ticket to save",
+        // Nuevas traducciones para el diálogo del consejo
+        consejo_dialog_title: "🎯 Expert Council Chamber",
+        btn_close_dialog: "Close Chamber",
+        dr_prob_speaker: "🎯 Dr. Probability",
+        ia9000_speaker: "🤖 AI-9000", 
+        darwin_speaker: "🧬 Darwin",
+        nash_speaker: "⚖️ Nash",
+        consejo_introduction: "The mathematical experts gather in the deliberation chamber...",
+        consejo_deliberation: "Beginning algorithmic analysis of the destiny numbers...",
+        consejo_final_decision: "🌟 FINAL COUNCIL DECISION 🌟",
+      },
+      fr: {
+        app_subtitle: "Générateur Intelligent de Combinaisons Gagnantes",
+        selected_numbers_title: "🎯 Numéros Sélectionnés",
+        select_up_to_6: "Sélectionnez jusqu'à 6 numéros",
+        number_selection_title: "Sélection de numéros",
+        tooltip_cold: "Marquer/Démarquer les numéros froids",
+        tooltip_hot: "Marquer/Démarquer les numéros chauds",
+        tooltip_excluded: "Marquer/Démarquer les numéros exclus",
+        tooltip_random: "Sélectionner 6 numéros au hasard",
+        tooltip_clear: "Effacer toutes les sélections",
+        stats_title: "📊 Statistiques en Temps Réel",
+        stat_total_sum: "Somme Totale",
+        stat_even_odd: "Pair/Impair",
+        stat_low_high: "Bas/Hauts",
+        stat_decades: "Dizaines",
+        stat_decade_groups: "Groupes de Dizaines",
+        stat_consecutive: "Consécutifs",
+        stat_digit_sum: "Somme des Chiffres",
+        stat_primes: "Nombres Premiers",
+        stat_deviation: "Écart-type",
+        stat_patterns: "Motifs",
+        strategy_title: "♟ Stratégie de Jeu",
+        strategy_simple: "Simple",
+        strategy_winning: "Stratégie Gagnante",
+        strategy_multiple: "Multiple",
+        strategy_consejo: "Mode Conseil",
+        label_generate: "Générer:",
+        span_combinations: "combinaisons",
+        label_play: "Jouer:",
+        span_best: "meilleures",
+        label_how_many_numbers: "Combien de numéros voulez-vous sélectionner ?",
+        option_7_numbers: "7 numéros",
+        option_8_numbers: "8 numéros",
+        option_9_numbers: "9 numéros",
+        option_10_numbers: "10 numéros",
+        option_11_numbers: "11 numéros",
+        btn_generate: "🍀 Générer Combinaison",
+        btn_generate_consejo: "🔮 Invoquer Sagesse Ancestrale",
+        ticket_title: "🎫 Votre Billet Gagnant",
+        btn_save: "💾 Sauvegarder Billet",
+        btn_share: "📤 Partager",
+        filters_title: "⚙ Filtres Intelligents",
+        filter_total_sum: "🎯 Somme Totale",
+        span_to: "à",
+        filter_even_odd: "⚖ Pair/Impair",
+        filter_low_high: "📊 Bas/Hauts (1-25/26-49)",
+        filter_decade_groups: "🔢 Regroupement par Dizaines",
+        filter_consecutive: "🔗 Nombres Consécutifs",
+        filter_exclude_endings: "⌫ Exclure Terminaisons",
+        filter_digit_sum: "∑ Somme des Chiffres",
+        span_to_2: "à",
+        filter_primes: "🔢 Nombres Premiers",
+        span_between: "Entre",
+        span_and: "et",
+        span_primes: "premiers",
+        filter_std_dev: "📊 Écart-type",
+        span_to_3: "à",
+        filter_exclude_patterns: "🚫 Exclure Motifs",
+        pattern_consecutive_evens: "⌫ Pairs consécutifs",
+        pattern_multiples: "⌫ Multiples",
+        saved_tickets_title: "🗂 Billets Sauvegardés",
+        no_saved_tickets: "Vous n'avez aucun billet sauvegardé",
+        loading_generating: "Génération de la combinaison...",
+        loading_consejo: "Le Conseil délibère... 🔮",
+        loading_attempts: "Tentatives",
+        modal_validate_title: "🔍 Valider le Billet",
+        modal_validate_instructions: "Saisissez les 6 numéros gagnants séparés par des espaces, des virgules ou des points.",
+        btn_close: "Fermer",
+        btn_validate: "Valider",
+        toast_combo_found: "🎉 Combinaison intelligente trouvée !",
+        toast_consejo_found: "🔮 Le Conseil a parlé ! Sagesse ancestrale révélée",
+        toast_no_combo: "Aucune combinaison valide trouvée. Desserrez les filtres.",
+        toast_generated_multiple: "Généré {0} combinaisons ! Affichage des {1} meilleures.",
+        toast_ticket_saved: "Billet sauvegardé avec succès",
+        toast_no_ticket_to_save: "Aucun billet à sauvegarder",
+        // Nuevas traducciones para el diálogo del consejo
+        consejo_dialog_title: "🎯 Chambre du Conseil d'Experts",
+        btn_close_dialog: "Fermer la Chambre",
+        dr_prob_speaker: "🎯 Dr. Probabilité",
+        ia9000_speaker: "🤖 IA-9000", 
+        darwin_speaker: "🧬 Darwin",
+        nash_speaker: "⚖️ Nash",
+        consejo_introduction: "Les experts mathématiques se rassemblent dans la chambre de délibération...",
+        consejo_deliberation: "Début de l'analyse algorithmique des nombres du destin...",
+        consejo_final_decision: "🌟 DÉCISION FINALE DU CONSEIL 🌟",
+      },
+      de: {
+        app_subtitle: "Intelligenter Generator für Gewinnkombinationen",
+        selected_numbers_title: "🎯 Ausgewählte Nummern",
+        select_up_to_6: "Wählen Sie bis zu 6 Nummern",
+        number_selection_title: "Nummernauswahl",
+        tooltip_cold: "Kalte Nummern markieren/entfernen",
+        tooltip_hot: "Heiße Nummern markieren/entfernen",
+        tooltip_excluded: "Ausgeschlossene Nummern markieren/entfernen",
+        tooltip_random: "6 Zufallsnummern auswählen",
+        tooltip_clear: "Alle Auswahlen löschen",
+        stats_title: "📊 Echtzeit-Statistiken",
+        stat_total_sum: "Gesamtsumme",
+        stat_even_odd: "Gerade/Ungerade",
+        stat_low_high: "Niedrig/Hoch",
+        stat_decades: "Dekaden",
+        stat_decade_groups: "Dekadengruppen",
+        stat_consecutive: "Aufeinanderfolgend",
+        stat_digit_sum: "Ziffernsumme",
+        stat_primes: "Primzahlen",
+        stat_deviation: "Abweichung",
+        stat_patterns: "Muster",
+        strategy_title: "♟ Spielstrategie",
+        strategy_simple: "Einfach",
+        strategy_winning: "Gewinnstrategie",
+        strategy_multiple: "Mehrfach",
+        strategy_consejo: "Ratsmodus",
+        label_generate: "Erzeugen:",
+        span_combinations: "kombinationen",
+        label_play: "Spielen:",
+        span_best: "beste",
+        label_how_many_numbers: "Wie viele Nummern möchten Sie auswählen?",
+        option_7_numbers: "7 Nummern",
+        option_8_numbers: "8 Nummern",
+        option_9_numbers: "9 Nummern",
+        option_10_numbers: "10 Nummern",
+        option_11_numbers: "11 Nummern",
+        btn_generate: "🍀 Kombination erzeugen",
+        btn_generate_consejo: "🔮 Uralte Weisheit anrufen",
+        ticket_title: "🎫 Ihr Gewinnlos",
+        btn_save: "💾 Los speichern",
+        btn_share: "📤 Teilen",
+        filters_title: "⚙ Intelligente Filter",
+        filter_total_sum: "🎯 Gesamtsumme",
+        span_to: "bis",
+        filter_even_odd: "⚖ Gerade/Ungerade",
+        filter_low_high: "📊 Niedrig/Hoch (1-25/26-49)",
+        filter_decade_groups: "🔢 Dekadengruppierung",
+        filter_consecutive: "🔗 Aufeinanderfolgende Nummern",
+        filter_exclude_endings: "⌫ Endungen ausschließen",
+        filter_digit_sum: "∑ Ziffernsumme",
+        span_to_2: "bis",
+        filter_primes: "🔢 Primzahlen",
+        span_between: "Zwischen",
+        span_and: "und",
+        span_primes: "primzahlen",
+        filter_std_dev: "📊 Standardabweichung",
+        span_to_3: "bis",
+        filter_exclude_patterns: "🚫 Muster ausschließen",
+        pattern_consecutive_evens: "⌫ aufeinanderfolgende gerade",
+        pattern_multiples: "⌫ Vielfache",
+        saved_tickets_title: "🗂 Gespeicherte Lose",
+        no_saved_tickets: "Sie haben keine gespeicherten Lose",
+        loading_generating: "Kombination wird erzeugt...",
+        loading_consejo: "Der Rat berät... 🔮",
+        loading_attempts: "Versuche",
+        modal_validate_title: "🔍 Los validieren",
+        modal_validate_instructions: "Geben Sie die 6 Gewinnzahlen getrennt durch Leerzeichen, Kommas oder Punkte ein.",
+        btn_close: "Schließen",
+        btn_validate: "Validieren",
+        toast_combo_found: "🎉 Intelligente Kombination gefunden!",
+        toast_consejo_found: "🔮 Der Rat hat gesprochen! Uralte Weisheit offenbart",
+        toast_no_combo: "Keine gültige Kombination gefunden. Lockern Sie die Filter.",
+        toast_generated_multiple: "{0} Kombinationen erzeugt! Die besten {1} werden angezeigt.",
+        toast_ticket_saved: "Ticket erfolgreich gespeichert",
+        toast_no_ticket_to_save: "Kein Ticket zum Speichern vorhanden",
+        // Nuevas traducciones para el diálogo del consejo
+        consejo_dialog_title: "🎯 Kammer des Expertenrates",
+        btn_close_dialog: "Kammer schließen",
+        dr_prob_speaker: "🎯 Dr. Wahrscheinlichkeit",
+        ia9000_speaker: "🤖 KI-9000", 
+        darwin_speaker: "🧬 Darwin",
+        nash_speaker: "⚖️ Nash",
+        consejo_introduction: "Die mathematischen Experten versammeln sich in der Beratungskammer...",
+        consejo_deliberation: "Beginn der algorithmischen Analyse der Schicksalszahlen...",
+        consejo_final_decision: "🌟 ENDGÜLTIGE RATSENTSCHEIDUNG 🌟",
+      }
+    };
+
+    class DataLotto49Advanced {
+      constructor() {
+        // Estado del sistema
+        this.selectedNumbers = [];
+        this.excludedNumbers = new Set();
+        this.hotNumbers = new Set();
+        this.coldNumbers = new Set();
+        this.currentSelectionMode = 'cold';
+        this.isGenerating = false;
+        this.savedTickets = [];
+        this.currentTicket = null;
+        this.currentValidatingTicket = null;
+        this.historicalData = [];
+        this.numberStats = {};
+        this.analysisPeriod = 100;
+        this.hotThreshold = 1.5;
+        this.coldThreshold = 0.5;
+        this.consejoMode = false; // Nueva propiedad para el modo consejo
+        this.finalConsejoNumbers = null; // Números elegidos por el consejo
+        this.currentJackpot = this.generateRandomJackpot(); // Simular bote actual
+
+        // Filtros (con nuevos valores por defecto)
+        this.filters = {
+          sum: { min: 121, max: 190 },
+          parImpar: ['4/2', '3/3'],
+          bajosAltos: ['4/2', '3/3', '2/4'],
+          agrupDecenas: ['6', '5/1', '4/2', '4/1/1', '3/3', '3/2/1', '3/1/1/1', '2/2/2', '2/2/1/1', '2/1/1/1/1'],
+          consecutivos: ['2/1/1/1/1', '1/1/1/1/1/1'],
+          terminaciones: [],
+          sumaDigitos: { min: 28, max: 45 },
+          primos: { min: 1, max: 3 },
+          desviacion: { min: 12.0, max: 18.0 },
+          patrones: []
+        };
+
+        // Inicializar
+        this.initializeHistoricalData();
+        this.initializeNumberStats();
+        this.analyzeNumbers();
+        this.createNumbersGrid();
+        this.loadSavedTickets();
+        this.bindEvents();
+        this.updateFilters(); // Cargar filtros desde la UI al iniciar
+        this.setLanguage('es'); // Establecer idioma por defecto
+      }
+
+      // Crear matriz 10x5
+      createNumbersGrid() {
+        const grid = document.getElementById('numbersGrid');
+        grid.innerHTML = '';
+        
+        // Matriz 10x5: Fila 1: 1-10, Fila 2: 11-20, Fila 3: 21-30, Fila 4: 31-40, Fila 5: 41-49
+        for(let fila = 0; fila < 5; fila++) {
+          for(let col = 0; col < 10; col++) {
+            const numero = fila * 10 + col + 1;
+            
+            // Última fila solo hasta 49
+            if(numero > 49) break;
+            
+            const ball = document.createElement('div');
+            ball.className = 'number-ball';
+            ball.dataset.number = numero;
+            ball.innerHTML = `<span>${numero}</span>`;
+            ball.addEventListener('click', () => this.handleNumberClick(numero, ball));
+            grid.appendChild(ball);
+          }
+        }
+      }
+
+      // Inicialización de datos históricos
+      initializeHistoricalData() {
+        const baseDate = new Date();
+        baseDate.setDate(baseDate.getDate() - 1000);
+
+        for(let i = 0; i < 500; i++) {
+          const drawDate = new Date(baseDate);
+          drawDate.setDate(drawDate.getDate() + (i * 3.5));
+          const numbers = this.generateRealisticDraw(i);
+          this.historicalData.push({
+            id: i + 1,
+            date: drawDate,
+            numbers: numbers.sort((a, b) => a - b),
+            sum: numbers.reduce((a, b) => a + b, 0)
+          });
+        }
+      }
+
+      // Generación de sorteos realistas
+      generateRealisticDraw(drawIndex) {
+        const numbers = new Set();
+        const ranges = [
+          { min: 1, max: 9, target: 1, weight: 0.8 },
+          { min: 10, max: 19, target: 1, weight: 1.0 },
+          { min: 20, max: 29, target: 1, weight: 1.0 },
+          { min: 30, max: 39, target: 1, weight: 1.0 },
+          { min: 40, max: 49, target: 1, weight: 0.8 }
+        ];
+
+        while(numbers.size < 6) {
+          const totalWeight = ranges.reduce((sum, r) => sum + r.weight, 0);
+          let rand = Math.random() * totalWeight;
+          let selectedRange = null;
+
+          for(const range of ranges) {
+            rand -= range.weight;
+            if(rand <= 0) {
+              selectedRange = range;
+              break;
+            }
+          }
+
+          if(selectedRange) {
+            let attempts = 0;
+            while(attempts < 10) {
+              const num = Math.floor(Math.random() * (selectedRange.max - selectedRange.min + 1)) + selectedRange.min;
+              if(!numbers.has(num)) {
+                numbers.add(num);
+                break;
+              }
+              attempts++;
+            }
+          }
+        }
+
+        return Array.from(numbers);
+      }
+
+      // Inicialización de estadísticas de números
+      initializeNumberStats() {
+        for(let i = 1; i <= 49; i++) {
+          this.numberStats[i] = {
+            frequency: 0,
+            lastAppearance: -1,
+            relativeFreq: 0,
+            trend: 0,
+            cycle: 0,
+            score: 0
+          };
+        }
+      }
+
+      // Análisis de números
+      analyzeNumbers() {
+        this.initializeNumberStats();
+
+        const analysisData = this.historicalData.slice(-this.analysisPeriod);
+        const totalDraws = analysisData.length;
+
+        analysisData.forEach((draw, index) => {
+          draw.numbers.forEach(num => {
+            this.numberStats[num].frequency++;
+            this.numberStats[num].lastAppearance = index;
+          });
+        });
+
+        for(let num = 1; num <= 49; num++) {
+          const stats = this.numberStats[num];
+          stats.relativeFreq = (stats.frequency / totalDraws) * 100;
+
+          const recentDraws = analysisData.slice(-20);
+          const recentFrequency = recentDraws.filter(draw => draw.numbers.includes(num)).length;
+          const olderDraws = analysisData.slice(-40, -20);
+          const olderFrequency = olderDraws.filter(draw => draw.numbers.includes(num)).length;
+          stats.trend = recentFrequency - olderFrequency;
+
+          if(stats.lastAppearance === -1) {
+            stats.cycle = totalDraws;
+          } else {
+            stats.cycle = totalDraws - 1 - stats.lastAppearance;
+          }
+
+          stats.score = this.calculateCompositeScore(num);
+        }
+
+        this.classifyNumbers();
+      }
+
+      // Cálculo de puntuación compuesta
+      calculateCompositeScore(num) {
+        const stats = this.numberStats[num];
+        const avgFreq = this.analysisPeriod / 6;
+        const freqComponent = (stats.frequency - avgFreq) / avgFreq;
+        const trendComponent = Math.max(-1, Math.min(1, stats.trend));
+        const maxCycle = this.analysisPeriod * 0.5;
+        const cycleComponent = (maxCycle - stats.cycle) / maxCycle;
+
+        return (freqComponent * 0.4) + (trendComponent * 0.3) + (cycleComponent * 0.3);
+      }
+
+      // Clasificación de números
+      classifyNumbers() {
+        this.hotNumbers.clear();
+        this.coldNumbers.clear();
+
+        for(let num = 1; num <= 49; num++) {
+          const score = this.numberStats[num].score;
+          if(score > this.hotThreshold) {
+            this.hotNumbers.add(num);
+          } else if(score < this.coldThreshold) {
+            this.coldNumbers.add(num);
+          }
+        }
+      }
+
+      // NUEVA FUNCIÓN: Validar inputs min/max
+      validateMinMaxInputs(minId, maxId, errorId, fieldName) {
+        const minInput = document.getElementById(minId);
+        const maxInput = document.getElementById(maxId);
+        const errorDiv = document.getElementById(errorId);
+        
+        if (!minInput || !maxInput || !errorDiv) return true;
+
+        const minValue = parseFloat(minInput.value);
+        const maxValue = parseFloat(maxInput.value);
+        
+        // Validar que min no sea mayor que max
+        if (minValue > maxValue) {
+          minInput.classList.add('error');
+          maxInput.classList.add('error');
+          errorDiv.classList.add('show');
+          return false;
+        } else {
+          minInput.classList.remove('error');
+          maxInput.classList.remove('error');
+          errorDiv.classList.remove('show');
+          return true;
+        }
+      }
+
+      // Vinculación de eventos
+      bindEvents() {
+        // Selector de idioma
+        document.getElementById('langSelector').addEventListener('change', (e) => {
+            this.setLanguage(e.target.value);
+        });
+          
+        // Modo de selección (SIN el botón de la mano)
+        document.querySelectorAll('.selection-mode-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            // Botones especiales
+            if (e.currentTarget.id === 'randomBtn') {
+              this.selectRandomNumbers();
+              return;
+            }
+            if (e.currentTarget.id === 'clearBtn') {
+              this.clearAllSelections();
+              return;
+            }
+            
+            // Cambio de modo normal
+            document.querySelectorAll('.selection-mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            this.currentSelectionMode = btn.dataset.mode;
+          });
+        });
+
+        // Estrategia de juego (MODIFICADO para incluir Modo Consejo)
+        document.querySelectorAll('.strategy-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('.strategy-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const strategy = btn.dataset.strategy;
+            
+            // Mostrar/ocultar opciones específicas
+            document.getElementById('winningOptions').style.display = strategy === 'winning' ? 'block' : 'none';
+            document.getElementById('multipleNumbersOptions').style.display = strategy === 'multiple' ? 'block' : 'none';
+            
+            // NUEVA FUNCIONALIDAD: Modo Consejo
+            this.consejoMode = strategy === 'consejo';
+            this.toggleConsejoMode();
+          });
+        });
+
+        // Opciones de números múltiples
+        document.querySelectorAll('.number-option').forEach(option => {
+          option.addEventListener('click', () => {
+            document.querySelectorAll('.number-option').forEach(o => o.classList.remove('active'));
+            option.classList.add('active');
+          });
+        });
+
+        // Chips de filtros
+        document.addEventListener('click', (e) => {
+          if(e.target.classList.contains('filter-chip') && e.target.dataset.value) {
+            this.handleFilterClick(e.target);
+          }
+        });
+
+        // Inputs de rango con validación
+        const rangeInputsConfig = [
+            { minId: 'sumMin', maxId: 'sumMax', errorId: 'sumError', fieldName: 'Suma Total' },
+            { minId: 'primosMin', maxId: 'primosMax', errorId: 'primosError', fieldName: 'Números Primos' },
+            { minId: 'sumaDigitosMin', maxId: 'sumaDigitosMax', errorId: 'sumaDigitosError', fieldName: 'Suma de Dígitos' },
+            { minId: 'desviacionMin', maxId: 'desviacionMax', errorId: 'desviacionError', fieldName: 'Desviación' },
+        ];
+
+        rangeInputsConfig.forEach(config => {
+            const minInput = document.getElementById(config.minId);
+            const maxInput = document.getElementById(config.maxId);
+            
+            const handler = () => {
+                this.validateMinMaxInputs(config.minId, config.maxId, config.errorId, config.fieldName);
+                this.updateFilters();
+            };
+            
+            if(minInput) {
+                minInput.addEventListener('change', handler);
+                minInput.addEventListener('input', handler);
+            }
+            if(maxInput) {
+                maxInput.addEventListener('change', handler);
+                maxInput.addEventListener('input', handler);
+            }
+        });
+
+        // Botones principales
+        document.getElementById('generateBtn').addEventListener('click', () => this.generateCombination());
+        document.getElementById('saveBtn').addEventListener('click', () => this.saveTicket());
+        document.getElementById('shareBtn').addEventListener('click', () => this.shareTicket());
+        document.getElementById('cancelValidationBtn').addEventListener('click', () => this.closeValidationModal());
+        document.getElementById('confirmValidationBtn').addEventListener('click', () => this.performValidation());
+        document.getElementById('consejoCloseBtn').addEventListener('click', () => this.closeConsejoDialog());
+
+        // Actualizar estado de papelera
+        this.updateClearButtonState();
+      }
+
+      // NUEVA FUNCIÓN: Generar bote aleatorio para simulación
+      generateRandomJackpot() {
+        // Simular botes de 5M a 150M euros
+        return Math.floor(Math.random() * 145000000) + 5000000;
+      }
+
+      // NUEVA FUNCIÓN: Obtener números populares vs anti-populares
+      getPopularityArrays() {
+        return {
+          // Números MUY populares (fechas, supersticiones, patrones)
+          veryPopular: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 21, 22, 23, 31, 33],
+          
+          // Números moderadamente populares  
+          moderatelyPopular: [14, 15, 16, 17, 18, 19, 20, 24, 25, 28, 30],
+          
+          // Números ANTI-populares (Nash's favorites)
+          antiPopular: [26, 27, 29, 32, 34, 35, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46, 47, 48, 49],
+          
+          // Números súper anti-populares (los más feos)
+          superAntiPopular: [34, 38, 42, 46, 47, 48, 49]
+        };
+      }
+
+      // NUEVA FUNCIÓN: Alternar Modo Consejo
+      toggleConsejoMode() {
+        const filtersContainer = document.getElementById('filtersContainer');
+        const consejoMessage = document.getElementById('consejoMessage');
+        const generateBtn = document.getElementById('generateBtn');
+        const lang = document.getElementById('langSelector').value || 'es';
+
+        if (this.consejoMode) {
+          // Activar Modo Consejo
+          filtersContainer.classList.add('disabled');
+          consejoMessage.style.display = 'block';
+          generateBtn.classList.add('consejo-mode');
+          
+          // Cambiar texto del botón
+          const btnSpan = generateBtn.querySelector('span');
+          if (btnSpan) {
+            btnSpan.textContent = translations[lang].btn_generate_consejo || '🔮 Invocar Sabiduría Ancestral';
+          }
+          
+          // Mensaje místico personalizado según idioma
+          const mysticalMessages = {
+            es: '🎯 ¡El Consejo de Expertos ha sido convocado! Los filtros están desactivados. Los algoritmos más avanzados tomarán control... 🤖',
+            en: '🎯 The Expert Council has been summoned! Filters are disabled. The most advanced algorithms will take control... 🤖',
+            fr: '🎯 Le Conseil d\'Experts a été convoqué ! Les filtres sont désactivés. Les algorithmes les plus avancés prendront le contrôle... 🤖',
+            de: '🎯 Der Expertenrat wurde einberufen! Filter sind deaktiviert. Die fortschrittlichsten Algorithmen übernehmen die Kontrolle... 🤖'
+          };
+          
+          consejoMessage.textContent = mysticalMessages[lang];
+          
+        } else {
+          // Desactivar Modo Consejo
+          filtersContainer.classList.remove('disabled');
+          consejoMessage.style.display = 'none';
+          generateBtn.classList.remove('consejo-mode');
+          
+          // Restaurar texto del botón
+          const btnSpan = generateBtn.querySelector('span');
+          if (btnSpan) {
+            btnSpan.textContent = translations[lang].btn_generate || '🍀 Generar Combinación';
+          }
+        }
+      }
+
+      // Manejo de clic en número
+      handleNumberClick(number, ball) {
+        // Al hacer clic manual, se eliminan los números aleatorios
+        this.clearRandomPicks();
+        this.clearConsejoPicks(); // Nueva función para limpiar picks del consejo
+        
+        if(this.currentSelectionMode === 'excluded') {
+          this.toggleExcludedNumber(number, ball);
+        } else if(this.currentSelectionMode === 'hot') {
+          this.toggleHotNumber(number, ball);
+        } else if(this.currentSelectionMode === 'cold') {
+          this.toggleColdNumber(number, ball);
+        } else {
+          // Modo selección normal para el propio juego
+          this.toggleSelectedNumber(number, ball);
+        }
+        this.calculateStats();
+        this.updateClearButtonState();
+      }
+
+      // Toggle de números seleccionados
+      toggleSelectedNumber(number, ball) {
+        const index = this.selectedNumbers.indexOf(number);
+        if(index > -1) {
+          this.selectedNumbers.splice(index, 1);
+          ball.classList.remove('selected');
+        } else {
+          if(this.selectedNumbers.length < 6) {
+            this.selectedNumbers.push(number);
+            ball.classList.add('selected');
+          }
+        }
+        this.updateDisplay();
+      }
+
+      // Toggle de números excluidos
+      toggleExcludedNumber(number, ball) {
+        if(this.excludedNumbers.has(number)) {
+          this.excludedNumbers.delete(number);
+          ball.classList.remove('excluded');
+        } else {
+          this.excludedNumbers.add(number);
+          ball.classList.add('excluded');
+        }
+      }
+
+      // Toggle de números calientes
+      toggleHotNumber(number, ball) {
+        if(this.hotNumbers.has(number)) {
+          this.hotNumbers.delete(number);
+          ball.classList.remove('hot');
+        } else {
+          this.hotNumbers.add(number);
+          ball.classList.add('hot');
+        }
+      }
+
+      // Toggle de números fríos
+      toggleColdNumber(number, ball) {
+        if(this.coldNumbers.has(number)) {
+          this.coldNumbers.delete(number);
+          ball.classList.remove('cold');
+        } else {
+          this.coldNumbers.add(number);
+          ball.classList.add('cold');
+        }
+      }
+      
+      // Seleccionar 6 números al azar
+      selectRandomNumbers() {
+        this.clearAllSelections();
+
+        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1);
+        const randomPicks = new Set();
+
+        while (randomPicks.size < 6) {
+          const randomIndex = Math.floor(Math.random() * availableNumbers.length);
+          const number = availableNumbers[randomIndex];
+          if (!randomPicks.has(number)) {
+            randomPicks.add(number);
+          }
+        }
+
+        this.selectedNumbers = Array.from(randomPicks);
+        this.selectedNumbers.forEach(num => {
+          const ball = document.querySelector(`.number-ball[data-number="${num}"]`);
+          if (ball) {
+            ball.classList.add('random-pick');
+          }
+        });
+
+        this.updateDisplay();
+        this.calculateStats();
+        this.updateClearButtonState();
+      }
+      
+      // Limpiar selecciones aleatorias
+      clearRandomPicks() {
+        document.querySelectorAll('.number-ball.random-pick').forEach(ball => {
+          ball.classList.remove('random-pick');
+        });
+      }
+
+      // NUEVA FUNCIÓN: Limpiar selecciones del consejo
+      clearConsejoPicks() {
+        document.querySelectorAll('.number-ball.consejo-pick').forEach(ball => {
+          ball.classList.remove('consejo-pick');
+        });
+      }
+      
+      // Limpiar todas las selecciones
+      clearAllSelections() {
+        this.selectedNumbers = [];
+        document.querySelectorAll('.number-ball.selected, .number-ball.random-pick, .number-ball.consejo-pick, .number-ball.hot, .number-ball.cold, .number-ball.excluded').forEach(ball => {
+          ball.classList.remove('selected', 'random-pick', 'consejo-pick', 'hot', 'cold', 'excluded');
+        });
+        
+        // Limpiar también los sets
+        this.hotNumbers.clear();
+        this.coldNumbers.clear();
+        this.excludedNumbers.clear();
+        
+        this.updateDisplay();
+        this.calculateStats();
+        this.updateClearButtonState();
+      }
+
+      // Actualizar estado visual del botón papelera
+      updateClearButtonState() {
+        const clearBtn = document.getElementById('clearBtn');
+        const hasSelections = this.selectedNumbers.length > 0 || 
+                            this.hotNumbers.size > 0 || 
+                            this.coldNumbers.size > 0 || 
+                            this.excludedNumbers.size > 0;
+        
+        if (hasSelections) {
+          clearBtn.classList.add('has-selections');
+        } else {
+          clearBtn.classList.remove('has-selections');
+        }
+      }
+
+      // Sincronizar números seleccionados con la visualización
+      syncNumbersToGrid() {
+        // Limpiar todas las clases primero
+        document.querySelectorAll('.number-ball').forEach(ball => {
+          ball.classList.remove('selected', 'random-pick', 'consejo-pick');
+        });
+        
+        // Aplicar las clases correctas
+        this.selectedNumbers.forEach(num => {
+          const ball = document.querySelector(`.number-ball[data-number="${num}"]`);
+          if(ball) {
+            if (this.consejoMode) {
+              ball.classList.add('consejo-pick');
+            } else {
+              ball.classList.add('selected');
+            }
+          }
+        });
+      }
+
+      // Manejo de clic en filtro
+      handleFilterClick(chip) {
+        chip.classList.toggle('active');
+        this.updateFilters();
+      }
+
+      // Actualización de filtros
+      updateFilters() {
+        this.filters.sum.min = parseInt(document.getElementById('sumMin').value) || 121;
+        this.filters.sum.max = parseInt(document.getElementById('sumMax').value) || 190;
+        this.filters.primos.min = parseInt(document.getElementById('primosMin').value) || 1;
+        this.filters.primos.max = parseInt(document.getElementById('primosMax').value) || 3;
+        this.filters.sumaDigitos.min = parseInt(document.getElementById('sumaDigitosMin').value) || 28;
+        this.filters.sumaDigitos.max = parseInt(document.getElementById('sumaDigitosMax').value) || 45;
+        this.filters.desviacion.min = parseFloat(document.getElementById('desviacionMin').value) || 12.0;
+        this.filters.desviacion.max = parseFloat(document.getElementById('desviacionMax').value) || 18.0;
+
+        this.filters.agrupDecenas = Array.from(document.querySelectorAll('#agrupDecenasOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.consecutivos = Array.from(document.querySelectorAll('#consecutivosOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.terminaciones = Array.from(document.querySelectorAll('#terminacionesExcluidasOptions .filter-chip.active')).map(chip => parseInt(chip.dataset.value));
+        this.filters.patrones = Array.from(document.querySelectorAll('#patronesOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.parImpar = Array.from(document.querySelectorAll('#parImparOptions .filter-chip.active')).map(chip => chip.dataset.value);
+        this.filters.bajosAltos = Array.from(document.querySelectorAll('#bajosAltosOptions .filter-chip.active')).map(chip => chip.dataset.value);
+      }
+
+      // Actualización de visualización
+      updateDisplay() {
+        const selectedDisplay = document.getElementById('selectedDisplay');
+        selectedDisplay.innerHTML = '';
+        const lang = document.getElementById('langSelector').value || 'es';
+
+        if(this.selectedNumbers.length === 0) {
+          selectedDisplay.innerHTML = `<div style="color:#666; font-style: italic;">${translations[lang].select_up_to_6}</div>`;
+        } else {
+          this.selectedNumbers.sort((a, b) => a - b).forEach(num => {
+            const span = document.createElement('span');
+            if (this.consejoMode) {
+              span.style.background = 'linear-gradient(135deg, var(--mystic), var(--mystic-light))';
+              span.style.boxShadow = '0 0 10px rgba(147, 51, 234, 0.5)';
+            } else {
+              span.style.background = '#ffd700';
+            }
+            span.style.color = 'white';
+            span.style.padding = '8px 12px';
+            span.style.borderRadius = '20px';
+            span.style.fontWeight = 'bold';
+            span.textContent = num;
+            selectedDisplay.appendChild(span);
+          });
+        }
+      }
+      
+      // Función para cambiar el idioma
+      setLanguage(lang) {
+        document.documentElement.lang = lang;
+        const elements = document.querySelectorAll('[data-translate-key]');
+        elements.forEach(el => {
+            const key = el.dataset.translateKey;
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        
+        const titleElements = document.querySelectorAll('[data-translate-title-key]');
+        titleElements.forEach(el => {
+            const key = el.dataset.translateTitleKey;
+            if (translations[lang] && translations[lang][key]) {
+                el.title = translations[lang][key];
+            }
+        });
+        // Actualizar placeholder de selección de números
+        this.updateDisplay();
+        
+        // Actualizar modo consejo si está activo
+        if (this.consejoMode) {
+          this.toggleConsejoMode();
+        }
+      }
+
+      // Generación de combinación
+      async generateCombination() {
+        if(this.isGenerating) return;
+        this.isGenerating = true;
+
+        try {
+          document.getElementById('saveBtn').disabled = false;
+          const strategy = document.querySelector('.strategy-btn.active').dataset.strategy;
+
+          if(strategy === 'simple') {
+            await this.generateSimpleCombination();
+          } else if(strategy === 'winning') {
+            await this.generateWinningCombination();
+          } else if(strategy === 'consejo') {
+            await this.generateConsejoCombination(); // Nueva función
+          } else {
+            await this.generateMultipleCombination();
+          }
+        } catch(error) {
+          this.showToast('Error generating combination: ' + error.message, 'error');
+        } finally {
+          this.isGenerating = false;
+        }
+      }
+
+      // NUEVA FUNCIÓN: Generación de combinación con sabiduría ancestral
+      async generateConsejoCombination() {
+        const loadingModal = document.getElementById('loadingModal');
+        const attemptsEl = document.getElementById('loadingAttempts');
+        const loadingText = document.getElementById('loadingText');
+        const lang = document.getElementById('langSelector').value || 'es';
+
+        // Regenerar bote para nueva estrategia Nash
+        this.currentJackpot = this.generateRandomJackpot();
+
+        attemptsEl.textContent = '0';
+        loadingModal.style.display = 'flex';
+        loadingText.innerHTML = translations[lang].loading_consejo || 'El Consejo delibera... 🔮';
+
+        // Simulación de "sabiduría ancestral" - proceso más místico
+        await this.delay(1000); // Pausa dramática inicial
+
+        // Cerrar loading y mostrar diálogo del consejo
+        loadingModal.style.display = 'none';
+        await this.showConsejoDialog();
+
+        const combination = this.createConsejoWisdom();
+        
+        this.selectedNumbers = combination;
+        this.syncNumbersToGrid();
+        this.updateDisplay();
+        this.calculateStats();
+        this.showTicket([combination]);
+        
+        this.showToast(translations[lang].toast_consejo_found || '🔮 ¡El Consejo ha hablado! Sabiduría ancestral revelada', 'mystic');
+      }
+
+      // NUEVA FUNCIÓN: Mostrar diálogo del consejo
+      async showConsejoDialog() {
+        const modal = document.getElementById('consejoDialogModal');
+        const body = document.getElementById('consejoDialogBody');
+        const lang = document.getElementById('langSelector').value || 'es';
+
+        // Limpiar contenido previo
+        body.innerHTML = '';
+        
+        // Mostrar modal
+        modal.style.display = 'flex';
+
+        // Los miembros del consejo según documentación oficial
+        const councilMembers = [
+          {
+            name: translations[lang].dr_prob_speaker || '🎯 Dr. Probabilidad',
+            type: 'sage',
+            expertise: 'análisis de deuda estadística y números que deben salir',
+            philosophy: 'Los números con mayor deuda estadística tienen mayor probabilidad'
+          },
+          {
+            name: translations[lang].ia9000_speaker || '🤖 IA-9000',
+            type: 'mystic', 
+            expertise: 'red neuronal con 50 años de datos de loterías mundiales',
+            philosophy: 'Los patrones ocultos emergen del big data'
+          },
+          {
+            name: translations[lang].darwin_speaker || '🧬 Darwin',
+            type: 'ancient',
+            expertise: 'algoritmo genético que evoluciona combinaciones ganadoras',
+            philosophy: 'Las mejores combinaciones evolucionan, solo los más aptos sobreviven'
+          },
+          {
+            name: translations[lang].nash_speaker || '⚖️ Nash',
+            type: 'oracle',
+            expertise: 'teoría de juegos para maximizar premios no compartidos',
+            philosophy: 'Jugar diferente a la masa maximiza el premio'
+          }
+        ];
+
+        // Introducción con información del bote actual
+        await this.addConsejoMessage('', 'final', translations[lang].consejo_introduction);
+        await this.delay(1500);
+        await this.addConsejoMessage('', 'final', `💰 Bote actual: €${(this.currentJackpot/1000000).toFixed(1)} millones`);
+        await this.delay(1000);
+        await this.addConsejoMessage('', 'final', translations[lang].consejo_deliberation);
+        await this.delay(2000);
+
+        // Proceso de selección de números con diálogos
+        const selectedNumbers = [];
+        
+        // Diálogo para cada número
+        for (let i = 0; i < 6; i++) {
+          const speaker = councilMembers[i % councilMembers.length];
+          
+          // Mostrar que está pensando
+          await this.showTypingIndicator(speaker);
+          await this.delay(1000 + Math.random() * 1000);
+          
+          // Generar y explicar el número
+          const number = this.selectMysticNumber(selectedNumbers, speaker, i + 1);
+          selectedNumbers.push(number);
+          
+          const reasoning = this.generateNumberReasoning(number, speaker, i + 1, lang);
+          await this.addConsejoMessage(speaker.name, speaker.type, reasoning);
+          await this.delay(1500);
+        }
+
+        // Conclusión final
+        await this.delay(1000);
+        await this.addConsejoMessage('', 'final', translations[lang].consejo_final_decision);
+        await this.delay(500);
+        await this.addConsejoMessage('', 'final', `Los números seleccionados por consenso algorítmico: ${selectedNumbers.sort((a, b) => a - b).join(' - ')}`);
+
+        // Agregar mensaje de confianza del sistema
+        await this.delay(500);
+        await this.addConsejoMessage('', 'final', `🎯 Confianza del sistema: ${(85 + Math.random() * 10).toFixed(1)}% | Consenso de ${selectedNumbers.length}/6 expertos`);
+
+        // Comentario final de Nash sobre la estrategia aplicada
+        await this.delay(1000);
+        const nashMember = councilMembers.find(m => m.type === 'oracle');
+        const isHighJackpot = this.currentJackpot > 30000000;
+        const popularNumbers = selectedNumbers.filter(n => n <= 31).length;
+        
+        let nashFinalComment = '';
+        if (isHighJackpot && popularNumbers <= 1) {
+          nashFinalComment = `Perfecto. Con €${(this.currentJackpot/1000000).toFixed(1)}M en juego, solo ${popularNumbers} número${popularNumbers !== 1 ? 's' : ''} popular${popularNumbers !== 1 ? 'es' : ''}. Maximizamos premio individual.`;
+        } else if (isHighJackpot && popularNumbers > 2) {
+          nashFinalComment = `⚠️ Advertencia: ${popularNumbers} números populares con bote alto. Riesgo de compartir €${(this.currentJackpot/1000000).toFixed(1)}M con muchos ganadores.`;
+        } else {
+          nashFinalComment = `Estrategia equilibrada para bote de €${(this.currentJackpot/1000000).toFixed(1)}M. Balance óptimo entre probabilidad y anti-popularidad.`;
+        }
+        
+        await this.addConsejoMessage(nashMember.name, 'oracle', nashFinalComment);
+
+        // Guardar la combinación
+        this.finalConsejoNumbers = selectedNumbers;
+        
+        // Auto-cerrar después de 3 segundos o dejar que el usuario cierre
+        setTimeout(() => {
+          if (modal.style.display === 'flex') {
+            this.closeConsejoDialog();
+          }
+        }, 8000);
+      }
+
+      // NUEVA FUNCIÓN: Agregar mensaje al diálogo
+      async addConsejoMessage(speaker, type, text) {
+        const body = document.getElementById('consejoDialogBody');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `consejo-message ${type}`;
+        
+        if (speaker) {
+          messageDiv.innerHTML = `
+            <div class="consejo-speaker">${speaker}</div>
+            <div class="consejo-text">${text}</div>
+          `;
+        } else {
+          messageDiv.innerHTML = `<div class="consejo-text">${text}</div>`;
+        }
+        
+        body.appendChild(messageDiv);
+        body.scrollTop = body.scrollHeight;
+        
+        // Pequeña pausa para la animación
+        await this.delay(100);
+      }
+
+      // NUEVA FUNCIÓN: Mostrar indicador de escritura personalizado
+      async showTypingIndicator(speaker) {
+        const body = document.getElementById('consejoDialogBody');
+        const typingDiv = document.createElement('div');
+        typingDiv.className = `consejo-message ${speaker.type} typing-indicator`;
+        typingDiv.id = 'typing-indicator';
+        
+        // Frases de pensamiento específicas por tipo de experto
+        const thinkingPhrases = {
+          sage: 'analizando deuda estadística...', // Dr. Probabilidad
+          mystic: 'procesando big data neural...', // IA-9000
+          ancient: 'evaluando algoritmo genético...', // Darwin
+          oracle: `calculando anti-popularidad vs €${(this.currentJackpot/1000000).toFixed(1)}M...` // Nash con bote real
+        };
+        
+        typingDiv.innerHTML = `
+          <div class="consejo-speaker">${speaker.name}</div>
+          <div class="typing-text">
+            <span>${thinkingPhrases[speaker.type]}</span>
+            <div class="typing-dots">
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+            </div>
+          </div>
+        `;
+        
+        body.appendChild(typingDiv);
+        body.scrollTop = body.scrollHeight;
+      }
+
+      // NUEVA FUNCIÓN: Seleccionar número según experticia específica
+      selectMysticNumber(existingNumbers, speaker, position) {
+        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1)
+          .filter(num => !existingNumbers.includes(num) && !this.excludedNumbers.has(num));
+
+        let selectedNumber;
+        
+        switch (speaker.type) {
+          case 'sage': // Dr. Probabilidad
+            // Busca números con "deuda estadística" - que han salido menos en análisis histórico
+            const numberFrequency = {};
+            for(let i = 1; i <= 49; i++) {
+              numberFrequency[i] = this.numberStats[i] ? this.numberStats[i].frequency : 0;
+            }
+            const availableWithFreq = availableNumbers.map(n => ({
+              number: n, 
+              frequency: numberFrequency[n] || 0
+            })).sort((a, b) => a.frequency - b.frequency);
+            
+            // Seleccionar entre los 10 números con menor frecuencia
+            const lowFreqNumbers = availableWithFreq.slice(0, 10).map(item => item.number);
+            selectedNumber = lowFreqNumbers[Math.floor(Math.random() * lowFreqNumbers.length)];
+            break;
+            
+          case 'mystic': // IA-9000
+            // Usa patrones complejos basados en big data
+            const neuralNumbers = availableNumbers.filter(n => {
+              // Patrón neural: números que forman secuencias interesantes
+              const digitSum = this.getDigitSum(n);
+              const isPrime = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47].includes(n);
+              const isInSequence = existingNumbers.some(existing => Math.abs(existing - n) === 7 || Math.abs(existing - n) === 11);
+              
+              return digitSum === 7 || digitSum === 11 || isPrime || isInSequence;
+            });
+            selectedNumber = neuralNumbers.length > 0 ?
+              neuralNumbers[Math.floor(Math.random() * neuralNumbers.length)] :
+              availableNumbers[Math.floor(Math.random() * availableNumbers.length)];
+            break;
+            
+          case 'ancient': // Darwin
+            // Algoritmo genético: números que han "evolucionado" bien
+            const evolutionNumbers = availableNumbers.filter(n => {
+              // Busca números que aparecen en rangos equilibrados
+              const range1to10 = existingNumbers.filter(ex => ex >= 1 && ex <= 10).length;
+              const range11to20 = existingNumbers.filter(ex => ex >= 11 && ex <= 20).length;
+              const range21to30 = existingNumbers.filter(ex => ex >= 21 && ex <= 30).length;
+              const range31to40 = existingNumbers.filter(ex => ex >= 31 && ex <= 40).length;
+              const range41to49 = existingNumbers.filter(ex => ex >= 41 && ex <= 49).length;
+              
+              // Prefiere números que equilibren la distribución
+              if (n >= 1 && n <= 10) return range1to10 < 2;
+              if (n >= 11 && n <= 20) return range11to20 < 2;
+              if (n >= 21 && n <= 30) return range21to30 < 2;
+              if (n >= 31 && n <= 40) return range31to40 < 2;
+              if (n >= 41 && n <= 49) return range41to49 < 2;
+              return false;
+            });
+            selectedNumber = evolutionNumbers.length > 0 ?
+              evolutionNumbers[Math.floor(Math.random() * evolutionNumbers.length)] :
+              availableNumbers[Math.floor(Math.random() * availableNumbers.length)];
+            break;
+            
+          case 'oracle': // Nash - VERDADERA TEORÍA DE JUEGOS
+            const popularity = this.getPopularityArrays();
+            const isHighJackpot = this.currentJackpot > 30000000; // 30M+ = bote alto
+            
+            let nashCandidates = [];
+            
+            if (isHighJackpot) {
+              // BOTE ALTO: Estrategia anti-popular EXTREMA
+              nashCandidates = popularity.antiPopular.filter(n => availableNumbers.includes(n));
+              
+              // Si necesitamos más números, usar algunos moderadamente populares pero evitar los muy populares
+              if (nashCandidates.length === 0) {
+                nashCandidates = popularity.moderatelyPopular.filter(n => availableNumbers.includes(n));
+              }
+            } else {
+              // BOTE NORMAL: Estrategia balanceada (70% anti-popular, 30% otros)
+              if (Math.random() < 0.7) {
+                nashCandidates = popularity.antiPopular.filter(n => availableNumbers.includes(n));
+              } else {
+                nashCandidates = popularity.moderatelyPopular.filter(n => availableNumbers.includes(n));
+              }
+            }
+            
+            // Filtro adicional Nash: evitar números que formen patrones obvios con los ya seleccionados
+            nashCandidates = nashCandidates.filter(n => {
+              // Evitar secuencias obvias
+              const formsSequence = existingNumbers.some(existing => 
+                Math.abs(existing - n) === 1 || Math.abs(existing - n) === 10
+              );
+              
+              // Evitar números que completarían patrones "bonitos"
+              const completesPattern = existingNumbers.some(existing => 
+                (existing + n) % 7 === 0 || existing === n/2 || n === existing/2
+              );
+              
+              return !formsSequence && !completesPattern;
+            });
+            
+            selectedNumber = nashCandidates.length > 0 ?
+              nashCandidates[Math.floor(Math.random() * nashCandidates.length)] :
+              availableNumbers.filter(n => !popularity.veryPopular.includes(n))[Math.floor(Math.random() * availableNumbers.filter(n => !popularity.veryPopular.includes(n)).length)] ||
+              availableNumbers[Math.floor(Math.random() * availableNumbers.length)];
+            break;
+            
+          default:
+            selectedNumber = availableNumbers[Math.floor(Math.random() * availableNumbers.length)];
+        }
+        
+        return selectedNumber;
+      }
+
+      // NUEVA FUNCIÓN: Generar razonamiento según documentación oficial
+      generateNumberReasoning(number, speaker, position, lang) {
+        const reasonings = {
+          es: {
+            sage: [ // Dr. Probabilidad
+              `Propongo el ${number}. Análisis estadístico revela una deuda de ${Math.floor(Math.random() * 20 + 10)} sorteos sin aparecer.`,
+              `El ${number} tiene la mayor deuda estadística de este rango. Estadísticamente debe salir YA.`,
+              `Según mis cálculos, el ${number} lleva ${Math.floor(Math.random() * 15 + 5)} sorteos de retraso. Es hora de su aparición.`,
+              `El ${number} presenta un déficit de frecuencia del ${Math.floor(Math.random() * 30 + 15)}%. Recomiendo su inclusión inmediata.`
+            ],
+            mystic: [ // IA-9000
+              `Mis neuronas detectan ${(Math.random() * 20 + 75).toFixed(1)}% probabilidad en el número ${number}.`,
+              `Patrón neural complejo identificado: el ${number} emerge del análisis de 50 años de datos globales.`,
+              `Big data revela correlación significativa del ${number} con secuencias ganadoras históricas.`,
+              `Algoritmo de deep learning asigna confianza del ${(Math.random() * 15 + 80).toFixed(1)}% al número ${number}.`
+            ],
+            ancient: [ // Darwin
+              `El ${number} ha sobrevivido ${Math.floor(Math.random() * 500 + 100)} generaciones evolutivas. Solo los más aptos perduran.`,
+              `Esta combinación ganó la competencia entre 1000 variantes. El ${number} demostró superioridad adaptativa.`,
+              `Algoritmo genético confirma: el ${number} posee características ganadoras dominantes.`,
+              `Después de ${Math.floor(Math.random() * 50 + 20)} iteraciones evolutivas, el ${number} emerge victorious.`
+            ],
+            oracle: [ // Nash
+              `El ${number} es jugado por solo el ${Math.floor(Math.random() * 8 + 2)}% de apostadores. Optimizando para premios no compartidos.`,
+              `¡Estos números son muy populares! Mejor el ${number} que maximiza premio individual.`,
+              `Equilibrio Nash detectado: el ${number} ofrece la mejor relación riesgo-recompensa única.`,
+              `Meta-análisis confirma: el ${number} minimiza competencia y maximiza retorno potencial.`
+            ]
+          },
+          en: {
+            sage: [ // Dr. Probability  
+              `I propose ${number}. Statistical analysis reveals a debt of ${Math.floor(Math.random() * 20 + 10)} draws without appearing.`,
+              `${number} has the highest statistical debt in this range. It must come out NOW.`,
+              `According to my calculations, ${number} is ${Math.floor(Math.random() * 15 + 5)} draws overdue. Time for its appearance.`,
+              `${number} shows a frequency deficit of ${Math.floor(Math.random() * 30 + 15)}%. I recommend immediate inclusion.`
+            ],
+            mystic: [ // AI-9000
+              `My neurons detect ${(Math.random() * 20 + 75).toFixed(1)}% probability in number ${number}.`,
+              `Complex neural pattern identified: ${number} emerges from 50 years of global data analysis.`,
+              `Big data reveals significant correlation of ${number} with historical winning sequences.`,
+              `Deep learning algorithm assigns ${(Math.random() * 15 + 80).toFixed(1)}% confidence to number ${number}.`
+            ],
+            ancient: [ // Darwin
+              `${number} has survived ${Math.floor(Math.random() * 500 + 100)} evolutionary generations. Only the fittest endure.`,
+              `This combination won the competition among 1000 variants. ${number} demonstrated adaptive superiority.`,
+              `Genetic algorithm confirms: ${number} possesses dominant winning characteristics.`,
+              `After ${Math.floor(Math.random() * 50 + 20)} evolutionary iterations, ${number} emerges victorious.`
+            ],
+            oracle: [ // Nash - REAL GAME THEORY
+              `${number} is played by only ${Math.floor(Math.random() * 8 + 2)}% of bettors. With €${(this.currentJackpot/1000000).toFixed(1)}M jackpot, optimizing for unshared prize.`,
+              `Dates 1-31 are rookie traps! ${number} is in anti-popular zone. Maximum individual prize guaranteed.`,
+              `Nash equilibrium detected: while masses play birthdays, I play ${number}. Their cognitive bias = my economic advantage.`,
+              `Meta-analysis reveals: ${number} avoids obvious patterns. If 50 winners use dates, I'll be the only one with anti-populars.`,
+              `Current jackpot €${(this.currentJackpot/1000000).toFixed(1)}M. ${number} minimizes competitors and maximizes my return. Pure theory.`,
+              `Excellent! ${number} is in range 32-49, zone despised by emotional players. Full prize for strategists.`
+            ]
+          }
+          // Se pueden agregar más idiomas aquí con las mismas características
+        };
+
+        const speakerReasonings = reasonings[lang] && reasonings[lang][speaker.type] ? 
+          reasonings[lang][speaker.type] : reasonings['es'][speaker.type];
+        
+        return speakerReasonings[Math.floor(Math.random() * speakerReasonings.length)];
+      }
+
+      // NUEVA FUNCIÓN: Calcular suma de dígitos
+      getDigitSum(number) {
+        return number.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+      }
+
+      // NUEVA FUNCIÓN: Cerrar diálogo del consejo
+      closeConsejoDialog() {
+        const modal = document.getElementById('consejoDialogModal');
+        modal.style.display = 'none';
+        
+        // Limpiar indicador de escritura si existe
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+          typingIndicator.remove();
+        }
+      }
+
+      // NUEVA FUNCIÓN: Crear combinación basada en "sabiduría ancestral"
+      createConsejoWisdom() {
+        // Si ya tenemos números del diálogo del consejo, usarlos
+        if (this.finalConsejoNumbers && this.finalConsejoNumbers.length === 6) {
+          return this.finalConsejoNumbers.sort((a, b) => a - b);
+        }
+
+        // Algoritmo especial que ignora filtros y usa "sabiduría ancestral"
+        const combination = [];
+        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1)
+          .filter(num => !this.excludedNumbers.has(num));
+
+        // Sabiduría ancestral: patrones místicos basados en números especiales
+        const mysticNumbers = [7, 13, 21, 23, 33, 42]; // Números con significado místico
+        const goldenNumbers = [1, 1, 2, 3, 5, 8, 13, 21, 34]; // Fibonacci hasta 49
+        const primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+
+        // Incluir algunos números místicos especiales (20% probabilidad cada uno)
+        mysticNumbers.forEach(num => {
+          if (Math.random() < 0.2 && combination.length < 6 && availableNumbers.includes(num)) {
+            combination.push(num);
+            availableNumbers.splice(availableNumbers.indexOf(num), 1);
+          }
+        });
+
+        // Incluir números basados en ciclos lunares y patrones ancestrales
+        const moonNumbers = [4, 11, 18, 25, 32, 39, 46]; // Ciclo de 7 días
+        moonNumbers.forEach(num => {
+          if (Math.random() < 0.15 && combination.length < 6 && availableNumbers.includes(num)) {
+            combination.push(num);
+            availableNumbers.splice(availableNumbers.indexOf(num), 1);
+          }
+        });
+
+        // Sabiduría de los elementos: distribuir por rangos elementales
+        const elementRanges = [
+          {name: 'Tierra', range: [1, 12], element: 0.3},
+          {name: 'Agua', range: [13, 24], element: 0.25}, 
+          {name: 'Aire', range: [25, 36], element: 0.25},
+          {name: 'Fuego', range: [37, 49], element: 0.2}
+        ];
+
+        // Completar con números distribuidos según los elementos
+        while (combination.length < 6 && availableNumbers.length > 0) {
+          let selectedNumber = null;
+          
+          // Intentar equilibrio elemental
+          for (const element of elementRanges) {
+            const elementNumbers = availableNumbers.filter(n => 
+              n >= element.range[0] && n <= element.range[1]
+            );
+            
+            if (elementNumbers.length > 0 && Math.random() < element.element) {
+              selectedNumber = elementNumbers[Math.floor(Math.random() * elementNumbers.length)];
+              break;
+            }
+          }
+          
+          // Si no se seleccionó por elementos, elegir al azar
+          if (!selectedNumber) {
+            selectedNumber = availableNumbers[Math.floor(Math.random() * availableNumbers.length)];
+          }
+          
+          combination.push(selectedNumber);
+          availableNumbers.splice(availableNumbers.indexOf(selectedNumber), 1);
+        }
+
+        return combination.slice(0, 6).sort((a, b) => a - b);
+      }
+
+      // Generación de combinación simple
+      async generateSimpleCombination() {
+        const loadingModal = document.getElementById('loadingModal');
+        const attemptsEl = document.getElementById('loadingAttempts');
+        let attempts = 0;
+        const maxAttempts = 50000;
+        const lang = document.getElementById('langSelector').value || 'es';
+
+        attemptsEl.textContent = '0';
+        loadingModal.style.display = 'flex';
+
+        while(attempts < maxAttempts) {
+          attempts++;
+          attemptsEl.textContent = attempts;
+
+          if(attempts % 100 === 0) {
+            await this.delay(1);
+          }
+
+          const combination = this.createIntelligentCombination();
+
+          if(this.validateCombination(combination)) {
+            this.selectedNumbers = combination;
+            this.syncNumbersToGrid();
+            this.updateDisplay();
+            this.calculateStats();
+            this.showTicket([combination]);
+            this.showToast(translations[lang].toast_combo_found, 'success');
+            loadingModal.style.display = 'none';
+            return;
+          }
+        }
+
+        loadingModal.style.display = 'none';
+        this.showToast(translations[lang].toast_no_combo, 'error');
+      }
+
+      // Generación de combinación ganadora
+      async generateWinningCombination() {
+        const loadingModal = document.getElementById('loadingModal');
+        const attemptsEl = document.getElementById('loadingAttempts');
+        const loadingText = document.getElementById('loadingText');
+        const lang = document.getElementById('langSelector').value || 'es';
+
+        loadingModal.style.display = 'flex';
+        attemptsEl.textContent = '0';
+        loadingText.innerHTML = translations[lang].loading_generating;
+
+        const generateCount = parseInt(document.getElementById('generateCount').value) || 100;
+        const playCount = parseInt(document.getElementById('playCount').value) || 10;
+
+        const validCombinations = [];
+        let attempts = 0;
+
+        while(validCombinations.length < generateCount && attempts < 100000) {
+          attempts++;
+          attemptsEl.textContent = attempts;
+
+          if(attempts % 100 === 0) {
+            await this.delay(1);
+          }
+
+          const combination = this.createIntelligentCombination();
+
+          if(this.validateCombination(combination)) {
+            const combinationStr = combination.join(',');
+            if(!validCombinations.some(c => c.join(',') === combinationStr)) {
+              validCombinations.push(combination);
+            }
+          }
+        }
+
+        if(validCombinations.length === 0) {
+          loadingModal.style.display = 'none';
+          this.showToast(translations[lang].toast_no_combo, 'error');
+          return;
+        }
+
+        const bestCombinations = this.selectBestCombinations(validCombinations, playCount);
+
+        if(bestCombinations.length > 0) {
+          this.selectedNumbers = bestCombinations[0];
+          this.syncNumbersToGrid();
+          this.updateDisplay();
+          this.calculateStats();
+        }
+
+        this.showTicket(bestCombinations);
+        const toastMsg = translations[lang].toast_generated_multiple
+                            .replace('{0}', validCombinations.length)
+                            .replace('{1}', playCount);
+        this.showToast(toastMsg, 'success');
+        loadingModal.style.display = 'none';
+      }
+
+      // Generación de combinación múltiple
+      async generateMultipleCombination() {
+        const loadingModal = document.getElementById('loadingModal');
+        const attemptsEl = document.getElementById('loadingAttempts');
+        const loadingText = document.getElementById('loadingText');
+        const lang = document.getElementById('langSelector').value || 'es';
+
+        attemptsEl.textContent = '0';
+        loadingModal.style.display = 'flex';
+        loadingText.innerHTML = translations[lang].loading_generating;
+
+        const numNumbers = parseInt(document.querySelector('.number-option.active')?.dataset.numbers || 7);
+        const maxAttempts = 50000;
+        let attempts = 0;
+
+        const getRequiredPercentage = (numbers) => {
+          switch(numbers) {
+            case 7: return 60;
+            case 8: return 40;
+            case 9: return 25;
+            case 10: return 15;
+            case 11: return 10;
+            default: return 50;
+          }
+        };
+
+        const requiredPercentage = getRequiredPercentage(numNumbers);
+        let bestCandidate = null;
+
+        while(attempts < maxAttempts) {
+          attempts++;
+          attemptsEl.textContent = attempts;
+
+          if(attempts % 100 === 0) {
+            await this.delay(1);
+          }
+
+          const nNumbers = this.generateDistributedNumbers(numNumbers);
+          const allCombinations = this.generateCombinations(nNumbers, 6);
+          let validCombinations = 0;
+          for(const combo of allCombinations) {
+            if(this.validateCombination(combo)) {
+              validCombinations++;
+            }
+          }
+
+          const validPercentage = (validCombinations / allCombinations.length) * 100;
+
+          if(validPercentage >= requiredPercentage) {
+            this.selectedNumbers = nNumbers.slice(0, 6);
+            this.syncNumbersToGrid();
+            this.updateDisplay();
+            this.calculateStats();
+
+            this.showTicketMultiple(nNumbers, validCombinations, allCombinations.length);
+            this.showToast(`🎉 Multiple combination of ${numNumbers} numbers found! (${validCombinations}/${allCombinations.length} valid - ${validPercentage.toFixed(1)}%)`, 'success');
+            loadingModal.style.display = 'none';
+            return;
+          }
+
+          if(!bestCandidate || validPercentage > bestCandidate.percentage) {
+            bestCandidate = {
+              numbers: [...nNumbers],
+              validCombinations: validCombinations,
+              totalCombinations: allCombinations.length,
+              percentage: validPercentage
+            };
+          }
+        }
+
+        if(bestCandidate && bestCandidate.percentage >= requiredPercentage * 0.6) {
+          this.selectedNumbers = bestCandidate.numbers.slice(0, 6);
+          this.syncNumbersToGrid();
+          this.updateDisplay();
+          this.calculateStats();
+
+          this.showTicketMultiple(bestCandidate.numbers, bestCandidate.validCombinations, bestCandidate.totalCombinations);
+          this.showToast(`⚡ Best combination of ${numNumbers} numbers found (${bestCandidate.validCombinations}/${bestCandidate.totalCombinations} valid - ${bestCandidate.percentage.toFixed(1)}%)`, 'success');
+          loadingModal.style.display = 'none';
+          return;
+        }
+
+        loadingModal.style.display = 'none';
+        this.showToast(`No valid multiple combination of ${numNumbers} numbers found. Best try: ${bestCandidate ? bestCandidate.percentage.toFixed(1) : 0}%. Try loosening the filters.`, 'error');
+      }
+
+      // Crear combinación inteligente (LÓGICA ORIGINAL CORREGIDA)
+      createIntelligentCombination() {
+        const combination = [];
+        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1)
+          .filter(num => !this.excludedNumbers.has(num));
+        
+        // Incluir algunos números calientes seleccionados (máximo 2)
+        const hotSelected = Array.from(this.hotNumbers).filter(n => availableNumbers.includes(n));
+        if(hotSelected.length > 0) {
+          const hotToAdd = Math.min(2, hotSelected.length);
+          for(let i = 0; i < hotToAdd; i++) {
+            const randomHot = hotSelected[Math.floor(Math.random() * hotSelected.length)];
+            if(!combination.includes(randomHot)) {
+              combination.push(randomHot);
+              hotSelected.splice(hotSelected.indexOf(randomHot), 1);
+            }
+          }
+        }
+        
+        // Incluir algunos números fríos seleccionados (máximo 2)
+        const coldSelected = Array.from(this.coldNumbers).filter(n => availableNumbers.includes(n));
+        if(coldSelected.length > 0 && combination.length < 6) {
+          const coldToAdd = Math.min(2, coldSelected.length, 6 - combination.length);
+          for(let i = 0; i < coldToAdd; i++) {
+            const randomCold = coldSelected[Math.floor(Math.random() * coldSelected.length)];
+            if(!combination.includes(randomCold)) {
+              combination.push(randomCold);
+              coldSelected.splice(coldSelected.indexOf(randomCold), 1);
+            }
+          }
+        }
+
+        // Completar con números aleatorios
+        const remainingNumbers = availableNumbers.filter(n => !combination.includes(n));
+        while (combination.length < 6 && remainingNumbers.length > 0) {
+          const randomIndex = Math.floor(Math.random() * remainingNumbers.length);
+          combination.push(remainingNumbers.splice(randomIndex, 1)[0]);
+        }
+
+        return combination.slice(0, 6).sort((a, b) => a - b);
+      }
+
+      // Generar números con mejor distribución
+      generateDistributedNumbers(count) {
+        const availableNumbers = Array.from({length: 49}, (_, i) => i + 1)
+          .filter(num => !this.excludedNumbers.has(num));
+        const attempts = [];
+        for(let i = 0; i < 10; i++) {
+          const candidate = [];
+          const available = [...availableNumbers];
+
+          const ranges = [
+            {min: 1, max: 10, count: 0},
+            {min: 11, max: 20, count: 0},
+            {min: 21, max: 30, count: 0},
+            {min: 31, max: 40, count: 0},
+            {min: 41, max: 49, count: 0}
+          ];
+
+          const numbersPerRange = Math.floor(count / 5);
+          const extraNumbers = count % 5;
+
+          for(let rangeIdx = 0; rangeIdx < ranges.length && candidate.length < count; rangeIdx++) {
+            const range = ranges[rangeIdx];
+            const targetCount = numbersPerRange + (rangeIdx < extraNumbers ? 1 : 0);
+            const rangeNumbers = available.filter(n => n >= range.min && n <= range.max);
+
+            for(let j = 0; j < targetCount && rangeNumbers.length > 0 && candidate.length < count; j++) {
+              const randomIndex = Math.floor(Math.random() * rangeNumbers.length);
+              const selectedNumber = rangeNumbers.splice(randomIndex, 1)[0];
+              candidate.push(selectedNumber);
+              available.splice(available.indexOf(selectedNumber), 1);
+            }
+          }
+
+          while(candidate.length < count && available.length > 0) {
+            const randomIndex = Math.floor(Math.random() * available.length);
+            candidate.push(available.splice(randomIndex, 1)[0]);
+          }
+
+          attempts.push(candidate.sort((a, b) => a - b));
+        }
+
+        let bestAttempt = attempts[0];
+        let bestScore = this.calculateDistributionScore(bestAttempt);
+
+        for(let i = 1; i < attempts.length; i++) {
+          const score = this.calculateDistributionScore(attempts[i]);
+          if(score > bestScore) {
+            bestScore = score;
+            bestAttempt = attempts[i];
+          }
+        }
+
+        return bestAttempt;
+      }
+
+      // Calcular puntuación de distribución
+      calculateDistributionScore(numbers) {
+        let score = 0;
+        const ranges = [
+          {min: 1, max: 10}, {min: 11, max: 20}, {min: 21, max: 30},
+          {min: 31, max: 40}, {min: 41, max: 49}
+        ];
+
+        ranges.forEach(range => {
+          const count = numbers.filter(n => n >= range.min && n <= range.max).length;
+          if(count > 0 && count <= 3) score += count * 2;
+          if(count > 3) score -= (count - 3);
+        });
+
+        for(let i = 1; i < numbers.length; i++) {
+          const gap = numbers[i] - numbers[i-1];
+          if(gap >= 2 && gap <= 8) score += 1;
+          if(gap === 1) score -= 0.5;
+          if(gap > 15) score -= 1;
+        }
+
+        if(this.hotNumbers && this.hotNumbers.size > 0) {
+          const hotCount = numbers.filter(n => this.hotNumbers.has(n)).length;
+          score += hotCount * 0.5;
+        }
+
+        return score;
+      }
+
+      // Generar combinaciones
+      generateCombinations(array, size) {
+        if(size === 1) return array.map(value => [value]);
+        if(size === array.length) return [array];
+        if(size > array.length) return [];
+
+        const combinations = [];
+        for(let i = 0; i <= array.length - size; i++) {
+          const head = array.slice(i, i + 1);
+          const tailCombinations = this.generateCombinations(array.slice(i + 1), size - 1);
+
+          for(const tail of tailCombinations) {
+            combinations.push([...head, ...tail]);
+          }
+        }
+        return combinations;
+      }
+
+      // Selección de mejores combinaciones
+      selectBestCombinations(combinations, count) {
+        return combinations
+          .map(combo => ({
+            combination: combo,
+            score: this.calculateAdvancedCombinationScore(combo)
+          }))
+          .sort((a, b) => b.score - a.score)
+          .slice(0, count)
+          .map(item => item.combination);
+      }
+
+      // Cálculo de puntuación avanzada
+      calculateAdvancedCombinationScore(combination) {
+        let score = 0;
+        const hotNumbers = combination.filter(n => this.hotNumbers.has(n));
+        score += hotNumbers.length * 15;
+        const coldNumbers = combination.filter(n => this.coldNumbers.has(n));
+        score -= coldNumbers.length * 8;
+
+        combination.forEach(num => {
+          const stats = this.numberStats[num];
+          if(stats) {
+            score += stats.score * 5;
+            if(stats.cycle >= 3 && stats.cycle <= 12) score += 3;
+            if(stats.trend > 0) score += stats.trend * 4;
+          }
+        });
+
+        const suma = combination.reduce((a, b) => a + b, 0);
+        if(suma >= 140 && suma <= 169) score += 20;
+        const pares = combination.filter(n => n % 2 === 0).length;
+        if(pares >= 2 && pares <= 4) score += 15;
+        const bajos = combination.filter(n => n <= 25).length;
+        if(bajos >= 2 && bajos <= 4) score += 10;
+
+        const ranges = [
+          combination.filter(n => n >= 1 && n <= 10).length,
+          combination.filter(n => n >= 11 && n <= 20).length,
+          combination.filter(n => n >= 21 && n <= 30).length,
+          combination.filter(n => n >= 31 && n <= 40).length,
+          combination.filter(n => n >= 41 && n <= 49).length
+        ];
+        const nonEmptyRanges = ranges.filter(count => count > 0).length;
+        score += nonEmptyRanges * 2;
+        score += Math.random() * 3;
+        return score;
+      }
+
+      // Validación de combinación (MODIFICADA para Modo Consejo)
+      validateCombination(combination) {
+        if (combination.length !== 6) return false;
+        if (new Set(combination).size !== 6) return false;
+        if (combination.some(n => this.excludedNumbers.has(n))) return false;
+        
+        // Si está en Modo Consejo, omitir todas las validaciones de filtros
+        if (this.consejoMode) {
+          return true;
+        }
+        
+        if (this.filters.terminaciones.length > 0) {
+          if (combination.some(n => this.filters.terminaciones.includes(n % 10))) {
+            return false;
+          }
+        }
+
+        const suma = combination.reduce((a, b) => a + b, 0);
+        if (suma < this.filters.sum.min || suma > this.filters.sum.max) return false;
+
+        const pares = combination.filter(n => n % 2 === 0).length;
+        const parImpar = `${pares}/${6 - pares}`;
+        if (this.filters.parImpar.length > 0 && !this.filters.parImpar.includes(parImpar)) return false;
+
+        const bajos = combination.filter(n => n <= 25).length;
+        const bajosAltos = `${bajos}/${6 - bajos}`;
+        if (this.filters.bajosAltos.length > 0 && !this.filters.bajosAltos.includes(bajosAltos)) return false;
+
+        const decenas = {
+          '1-9': combination.filter(n => n >= 1 && n <= 9).length,
+          '10-19': combination.filter(n => n >= 10 && n <= 19).length,
+          '20-29': combination.filter(n => n >= 20 && n <= 29).length,
+          '30-39': combination.filter(n => n >= 30 && n <= 39).length,
+          '40-49': combination.filter(n => n >= 40 && n <= 49).length
+        };
+        const decenaCounts = Object.values(decenas).filter(count => count > 0).sort((a, b) => b - a);
+        const agrupDecenas = decenaCounts.join('/');
+        if (this.filters.agrupDecenas.length > 0 && !this.filters.agrupDecenas.includes(agrupDecenas)) return false;
+
+        if (!this.validateConsecutivePattern(combination)) return false;
+
+        const sumaDigitos = combination.reduce((sum, num) => {
+          return sum + num.toString().split('').reduce((digitSum, digit) => digitSum + parseInt(digit), 0);
+        }, 0);
+        if (sumaDigitos < this.filters.sumaDigitos.min || sumaDigitos > this.filters.sumaDigitos.max) return false;
+
+        const primosList = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+        const primos = combination.filter(n => primosList.includes(n)).length;
+        if (primos < this.filters.primos.min || primos > this.filters.primos.max) return false;
+
+        const mean = combination.reduce((a, b) => a + b, 0) / 6;
+        const variance = combination.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / 6;
+        const desviacion = Math.sqrt(variance);
+        if (desviacion < this.filters.desviacion.min || desviacion > this.filters.desviacion.max) return false;
+
+        if (this.filters.patrones.includes('fibonacci') && this.isFibonacciSequence(combination)) return false;
+        if (this.filters.patrones.includes('paresConsecutivos') && this.hasConsecutivePairs(combination)) return false;
+        if (this.filters.patrones.includes('multiplos') && this.hasMultiples(combination)) return false;
+
+        return true;
+      }
+
+      // Validar patrón de consecutivos
+      validateConsecutivePattern(combination) {
+        const activePatterns = this.filters.consecutivos;
+        if (activePatterns.length === 0) return true;
+        const sorted = [...combination].sort((a, b) => a - b);
+        const actualPattern = this.calculateConsecutivePattern(sorted);
+        return activePatterns.includes(actualPattern);
+      }
+
+      // Calcular patrón de consecutivos
+      calculateConsecutivePattern(sortedNumbers) {
+        if (sortedNumbers.length !== 6) return '-';
+        const consecutiveGroups = [];
+        let currentGroup = 1;
+
+        for (let i = 1; i < sortedNumbers.length; i++) {
+          if (sortedNumbers[i] === sortedNumbers[i-1] + 1) {
+            currentGroup++;
+          } else {
+            if (currentGroup > 1) {
+              consecutiveGroups.push(currentGroup);
+            }
+            currentGroup = 1;
+          }
+        }
+
+        if (currentGroup > 1) {
+          consecutiveGroups.push(currentGroup);
+        }
+
+        const totalInGroups = consecutiveGroups.reduce((sum, group) => sum + group, 0);
+        const singleNumbers = 6 - totalInGroups;
+
+        const pattern = [...consecutiveGroups];
+        for (let i = 0; i < singleNumbers; i++) {
+          pattern.push(1);
+        }
+
+        return pattern.sort((a, b) => b - a).join('/');
+      }
+
+      // Verificación de secuencia Fibonacci
+      isFibonacciSequence(numbers) {
+        const fib = [1, 1, 2, 3, 5, 8, 13, 21, 34];
+        return numbers.every(num => fib.includes(num));
+      }
+
+      // Verificación de pares consecutivos
+      hasConsecutivePairs(numbers) {
+        const sorted = [...numbers].sort((a, b) => a - b);
+        for(let i = 0; i < sorted.length - 1; i++) {
+          if(sorted[i+1] === sorted[i] + 1 && sorted[i] % 2 === 0) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      // Verificación de múltiplos
+      hasMultiples(numbers) {
+        for(let i = 0; i < numbers.length; i++) {
+          for(let j = i + 1; j < numbers.length; j++) {
+            if(numbers[j] % numbers[i] === 0 || numbers[i] % numbers[j] === 0) {
+              return true;
+            }
+          }
+        }
+        return false;
+      }
+
+      // Cálculo de estadísticas
+      calculateStats() {
+        if (this.selectedNumbers.length < 6) {
+          this.clearStats();
+          return;
+        }
+
+        const nums = [...this.selectedNumbers].sort((a, b) => a - b);
+
+        // Suma
+        const suma = nums.reduce((a, b) => a + b, 0);
+        const sumaValid = this.consejoMode || (suma >= this.filters.sum.min && suma <= this.filters.sum.max);
+        this.updateStat('suma', suma, sumaValid);
+
+        // Par/Impar
+        const pares = nums.filter(n => n % 2 === 0).length;
+        const impares = nums.length - pares;
+        const parImpar = `${pares}/${impares}`;
+        const parImparValid = this.consejoMode || this.filters.parImpar.includes(parImpar);
+        this.updateStat('parImpar', parImpar, parImparValid);
+
+        // Bajos/Altos
+        const bajos = nums.filter(n => n <= 25).length;
+        const altos = nums.length - bajos;
+        const bajosAltos = `${bajos}/${altos}`;
+        const bajosAltosValid = this.consejoMode || this.filters.bajosAltos.includes(bajosAltos);
+        this.updateStat('bajosAltos', bajosAltos, bajosAltosValid);
+
+        // Decenas individuales
+        const decenasCount = {
+          '1-9': nums.filter(n => n >= 1 && n <= 9).length,
+          '10-19': nums.filter(n => n >= 10 && n <= 19).length,
+          '20-29': nums.filter(n => n >= 20 && n <= 29).length,
+          '30-39': nums.filter(n => n >= 30 && n <= 39).length,
+          '40-49': nums.filter(n => n >= 40 && n <= 49).length
+        };
+        const decenasPresentes = Object.keys(decenasCount).filter(k => decenasCount[k] > 0);
+        this.updateStat('decenas', decenasPresentes.length, true);
+
+        // Agrupación por decenas
+        const decenaCounts = Object.values(decenasCount).filter(count => count > 0).sort((a, b) => b - a);
+        const agrupDecenas = decenaCounts.join('/');
+        const agrupDecenasValid = this.consejoMode || this.filters.agrupDecenas.includes(agrupDecenas);
+        this.updateStat('agrupDecenas', agrupDecenas, agrupDecenasValid);
+
+        // Consecutivos
+        this.calculateConsecutiveStats(nums);
+
+        // Suma de dígitos
+        const sumaDigitos = nums.reduce((sum, num) => {
+          return sum + num.toString().split('').reduce((digitSum, digit) => digitSum + parseInt(digit), 0);
+        }, 0);
+        const sumaDigitosValid = this.consejoMode || (sumaDigitos >= this.filters.sumaDigitos.min && sumaDigitos <= this.filters.sumaDigitos.max);
+        this.updateStat('sumaDigitos', sumaDigitos, sumaDigitosValid);
+
+        // Primos
+        const primosList = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47];
+        const primos = nums.filter(n => primosList.includes(n)).length;
+        const primosValid = this.consejoMode || (primos >= this.filters.primos.min && primos <= this.filters.primos.max);
+        this.updateStat('primos', primos, primosValid);
+
+        // Desviación estándar
+        if (nums.length >= 2) {
+          const mean = suma / nums.length;
+          const variance = nums.reduce((sum, num) => sum + Math.pow(num - mean, 2), 0) / nums.length;
+          const desviacion = Math.sqrt(variance);
+          const desviacionValid = this.consejoMode || (desviacion >= this.filters.desviacion.min && desviacion <= this.filters.desviacion.max);
+          this.updateStat('desviacion', desviacion.toFixed(2), desviacionValid);
+        } else {
+          this.updateStat('desviacion', '-', false);
+        }
+
+        // Patrones
+        let patrones = [];
+        if (this.isFibonacciSequence(nums)) patrones.push('Fibonacci');
+        if (this.hasConsecutivePairs(nums)) patrones.push('Pares consec.');
+        if (this.hasMultiples(nums)) patrones.push('Múltiplos');
+
+        const patronesText = patrones.length > 0 ? patrones.join(', ') : 'Ninguno';
+        this.updateStat('patrones', patronesText, true);
+      }
+
+      // Calcular estadísticas de consecutivos
+      calculateConsecutiveStats(nums) {
+        const sorted = [...nums].sort((a, b) => a - b);
+        const consecutivePattern = this.calculateConsecutivePattern(sorted);
+        const consecutivosValid = this.consejoMode || this.validateConsecutivePattern(nums);
+
+        this.updateStat('consecutivos', consecutivePattern, consecutivosValid);
+
+        return { pattern: consecutivePattern, valid: consecutivosValid };
+      }
+
+      // Limpiar estadísticas
+      clearStats() {
+        const statIds = ['statSuma', 'statParImpar', 'statBajosAltos', 'statDecenas', 'statAgrupDecenas', 'statConsecutivos', 'statSumaDigitos', 'statPrimos', 'statDesviacion', 'statPatrones'];
+        statIds.forEach(id => {
+          const element = document.getElementById(id);
+          if(element) {
+            element.textContent = '-';
+            element.className = 'stat-value';
+          }
+        });
+      }
+
+      // Actualizar estadística individual
+      updateStat(statName, value, isValid) {
+        const element = document.getElementById(`stat${statName.charAt(0).toUpperCase() + statName.slice(1)}`);
+        if(element) {
+          element.textContent = value;
+          element.className = `stat-value ${isValid ? 'valid' : 'invalid'}`;
+        }
+      }
+
+      // Mostrar boleto
+      showTicket(combinations) {
+        const ticketEl = document.getElementById('ticket');
+        const ticketCombinations = document.getElementById('ticketCombinations');
+        ticketCombinations.innerHTML = combinations.map((combo, index) => `
+          <div class="ticket-combination">
+            <div class="ticket-number">${index + 1}</div>
+            <div>${combo.join('-')}</div>
+          </div>
+        `).join('');
+
+        const now = new Date();
+        document.getElementById('ticketDate').textContent = now.toLocaleString('es-ES');
+        ticketEl.style.display = 'block';
+
+        this.currentTicket = {
+          combinations: combinations,
+          date: now.toISOString(),
+          id: Date.now(),
+          maxHits: null
+        };
+      }
+
+      // Mostrar boleto múltiple
+      showTicketMultiple(numbers, validCombinations, totalCombinations) {
+        const ticketEl = document.getElementById('ticket');
+        const ticketCombinations = document.getElementById('ticketCombinations');
+        ticketCombinations.innerHTML = `
+          <div class="ticket-combination">
+            <div class="ticket-number">1</div>
+            <div>${numbers.join('-')}</div>
+          </div>
+          <div style="padding: 10px; background:#f9fafb; border-radius: 6px; font-size: 0.9rem;">
+            ${validCombinations}/${totalCombinations} valid combinations (${((validCombinations/totalCombinations)*100).toFixed(1)}%)
+          </div>
+        `;
+
+        const now = new Date();
+        document.getElementById('ticketDate').textContent = now.toLocaleString('es-ES');
+        ticketEl.style.display = 'block';
+
+        this.currentTicket = {
+          combinations: [numbers],
+          date: now.toISOString(),
+          id: Date.now(),
+          maxHits: null
+        };
+      }
+
+      // Guardar boleto
+      saveTicket() {
+        if(!this.currentTicket) {
+            const lang = document.getElementById('langSelector').value || 'es';
+            this.showToast(translations[lang].toast_no_ticket_to_save, 'error');
+            return;
+        }
+
+        // Límite de 10 boletos
+        if (this.savedTickets.length >= 10) {
+            this.savedTickets.pop();
+        }
+        this.savedTickets.unshift(this.currentTicket);
+        this.saveToStorage();
+        this.updateSavedTickets();
+        const lang = document.getElementById('langSelector').value || 'es';
+        this.showToast(translations[lang].toast_ticket_saved, 'success');
+        document.getElementById('saveBtn').disabled = true;
+      }
+
+      // Compartir boleto
+      shareTicket() {
+        if(!this.currentTicket) {
+          this.showToast('No hay boleto para compartir', 'error');
+          return;
+        }
+
+        const shareText = `🎲 DataLotto 49 PRO - Análisis IA
+📅 ${new Date(this.currentTicket.date).toLocaleString('es-ES')}
+${this.currentTicket.combinations.map((combo, index) => `${index + 1}. ${combo.join('-')}`).join('\n')}
+¡Combinación generada con IA! 🤖🍀`;
+
+        if(navigator.share) {
+          navigator.share({ title: 'DataLotto 49 PRO - Análisis IA', text: shareText });
+        } else {
+          navigator.clipboard.writeText(shareText).then(() => {
+            this.showToast('Boleto copiado al portapapeles');
+          }).catch(() => {
+            this.showToast('Error al copiar el boleto', 'error');
+          });
+        }
+      }
+
+      // Actualizar boletos guardados
+      updateSavedTickets() {
+        const container = document.getElementById('savedTickets');
+        const lang = document.getElementById('langSelector').value || 'es';
+        
+        if(this.savedTickets.length === 0) {
+          container.innerHTML = `<div style="color:#666; text-align: center; padding: 20px;">${translations[lang].no_saved_tickets}</div>`;
+          return;
+        }
+
+        container.innerHTML = this.savedTickets.map(ticket => `
+          <div class="saved-ticket-item" data-ticket-id="${ticket.id}">
+            <div class="saved-ticket-header">
+              <div class="saved-ticket-date">
+                Boleto #${ticket.id.toString().slice(-4)} | ${new Date(ticket.date).toLocaleString('es-ES')}
+                ${ticket.maxHits !== null ? `<span style="color: var(--success); font-weight: bold;"> | Máx: ${ticket.maxHits} aciertos</span>` : ''}
+              </div>
+              <div class="saved-ticket-actions">
+                <button class="saved-ticket-btn validate" data-id="${ticket.id}">🔍 Validar</button>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span>${ticket.combinations.length} combinación${ticket.combinations.length > 1 ? 'es' : ''}</span>
+              <button class="toggle-btn" data-id="${ticket.id}"><span>+</span></button>
+            </div>
+            <div class="saved-combinations" data-id="${ticket.id}" style="display: none;">
+              ${ticket.combinations.map((combo, index) => `
+                <div class="saved-combination" data-combo-index="${index}">
+                  <div class="saved-combination-content">
+                    <div class="saved-combination-number">${index + 1}</div>
+                    <div style="font-family:'Courier New', monospace;">${combo.join('-')}</div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('');
+
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const btnEl = e.target.closest('.toggle-btn');
+            const ticketId = btnEl.dataset.id;
+            const combinations = document.querySelector(`.saved-combinations[data-id="${ticketId}"]`);
+            const isVisible = combinations.style.display === 'block';
+            combinations.style.display = isVisible ? 'none' : 'block';
+            btnEl.innerHTML = isVisible ? '<span>+</span>' : '<span>−</span>';
+          });
+        });
+
+        document.querySelectorAll('.validate').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const ticketId = e.target.dataset.id;
+            this.validateSavedTicket(ticketId);
+          });
+        });
+      }
+
+      // Validar boleto guardado
+      validateSavedTicket(ticketId) {
+        const ticket = this.savedTickets.find(t => t.id.toString() === ticketId);
+        if(!ticket) {
+          this.showToast('Boleto no encontrado', 'error');
+          return;
+        }
+
+        this.currentValidatingTicket = ticket;
+        this.showValidationModal();
+      }
+
+      // Mostrar modal de validación
+      showValidationModal() {
+        document.getElementById('validationModal').style.display = 'flex';
+        document.getElementById('winningNumbersInput').value = '';
+        document.getElementById('validationResults').innerHTML = '';
+      }
+
+      // Cerrar modal de validación
+      closeValidationModal() {
+        document.getElementById('validationModal').style.display = 'none';
+        this.currentValidatingTicket = null;
+      }
+
+      // Realizar validación
+      performValidation() {
+        if(!this.currentValidatingTicket) {
+          this.showToast('No hay boleto para validar', 'error');
+          return;
+        }
+
+        const input = document.getElementById('winningNumbersInput').value.trim();
+        if(!input) {
+          this.showToast('Por favor, introduce los números ganadores', 'error');
+          return;
+        }
+
+        // Permitir separación por espacios, comas o puntos
+        const winningNumbers = input.split(/[,\s\.]+/).map(n => parseInt(n.trim())).filter(n => !isNaN(n) && n >= 1 && n <= 49);
+        if(winningNumbers.length !== 6) {
+          this.showToast('Debes introducir exactamente 6 números ganadores válidos.', 'error');
+          return;
+        }
+
+        let resultsHtml = '<h4>Resultados de Validación</h4>';
+        let maxMatches = 0;
+
+        // Actualizar el DOM del boleto guardado con los aciertos
+        const ticketElement = document.querySelector(`.saved-ticket-item[data-ticket-id="${this.currentValidatingTicket.id}"]`);
+
+        this.currentValidatingTicket.combinations.forEach((combo, index) => {
+          const matches = combo.filter(num => winningNumbers.includes(num)).length;
+          if (matches > maxMatches) maxMatches = matches;
+          
+          resultsHtml += `<div style="margin: 10px 0; padding: 10px; background:#f9fafb; border-radius: 6px;">
+              <strong>Combinación ${index + 1}:</strong> ${combo.join('-')}<br>
+              <strong>Aciertos: ${matches}/6</strong>
+            </div>`;
+
+          if (ticketElement) {
+             const comboElement = ticketElement.querySelector(`.saved-combination[data-combo-index="${index}"]`);
+             if (comboElement) {
+                // Limpiar aciertos previos
+                const existingHitCount = comboElement.querySelector('.hit-count');
+                if (existingHitCount) existingHitCount.remove();
+                // Añadir nuevo
+                const hitCountSpan = document.createElement('span');
+                hitCountSpan.className = 'hit-count';
+                hitCountSpan.textContent = `${matches} aciertos`;
+                comboElement.appendChild(hitCountSpan);
+             }
+          }
+        });
+
+        resultsHtml += `<div style="margin-top: 10px; padding: 10px; background:#e0f2fe; border-radius: 6px; font-weight: bold;">
+          Máximo de aciertos en una combinación: ${maxMatches}/6
+        </div>`;
+
+        // Guardar aciertos máximos en el boleto (persistencia)
+        this.currentValidatingTicket.maxHits = maxMatches;
+        this.saveToStorage();
+        this.updateSavedTickets();
+
+        document.getElementById('validationResults').innerHTML = resultsHtml;
+        this.showToast('Validación completada.');
+      }
+
+      // Cargar boletos guardados
+      loadSavedTickets() {
+        try {
+          const saved = localStorage.getItem('DataLotto49AdvancedTickets');
+          if(saved) {
+            this.savedTickets = JSON.parse(saved);
+            this.updateSavedTickets();
+          }
+        } catch(error) {
+          console.error('Error loading saved tickets:', error);
+        }
+      }
+
+      // Guardar en almacenamiento
+      saveToStorage() {
+        try {
+          localStorage.setItem('DataLotto49AdvancedTickets', JSON.stringify(this.savedTickets));
+        } catch(error) {
+          console.error('Error saving tickets:', error);
+          this.showToast('Error al guardar el boleto', 'error');
+        }
+      }
+
+      // Mostrar mensaje (MODIFICADO para incluir tipo 'mystic')
+      showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast ${type}`;
+        toast.classList.add('show');
+
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3500);
+      }
+
+      // Retardo
+      delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+    }
+
+    // Inicialización de la aplicación
+    let app;
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        app = new DataLotto49Advanced();
+        console.log('✅ DataLotto 49 Advanced con Modo Consejo cargado exitosamente');
+      } catch(error) {
+        console.error('❌ Error al cargar DataLotto 49 Advanced:', error);
+      }
+    });
+  </script>
+</body>
+</html>body{
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 background: linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);
 min-height: 100vh;
 padding: 20px;
