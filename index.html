@@ -121,7 +121,9 @@ color: var(--primary);
 margin-bottom: 15px;
 display: flex;
 align-items: center;
+justify-content: center;
 gap: 10px;
+text-align: center;
 }
 
 .selected-display{
@@ -145,33 +147,39 @@ box-shadow: var(--shadow);
 
 .number-selection-header{
 display: flex;
-justify-content: space-between;
+flex-direction: column;
 align-items: center;
 margin-bottom: 15px;
+gap: 15px;
 }
 
 .number-selection-header h3{
 color: var(--primary);
+text-align: center;
+margin: 0;
 }
 
 .selection-mode-controls{
 display: flex;
+justify-content: center;
 gap: 10px;
+flex-wrap: wrap;
 }
 
 .selection-mode-btn{
-width: 60px;
-height: 60px;
-border: 4px solid;
+width: 45px;
+height: 45px;
+border: 3px solid;
 border-radius: 50%;
 cursor: pointer;
 transition: all 0.3s ease;
-font-size: 1.8rem;
+font-size: 1.4rem;
 display: flex;
 align-items: center;
 justify-content: center;
 position: relative;
 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+background: #f5f5f5;
 }
 
 .selection-mode-btn:hover{
@@ -235,6 +243,9 @@ box-shadow: 0 8px 25px rgba(158, 158, 158, 0.4);
 
 #clearBtn {
     transition: all 0.3s ease;
+    border-color: #9e9e9e;
+    background: #f5f5f5;
+    color: #616161;
 }
 
 #clearBtn:hover {
@@ -245,6 +256,17 @@ box-shadow: 0 8px 25px rgba(158, 158, 158, 0.4);
     background: var(--danger-light);
     border-color: var(--danger-light);
     color: white;
+}
+
+/* Efecto shake para la papelera */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+#clearBtn.shake {
+    animation: shake 0.5s ease-in-out;
 }
 
 /* Nueva matriz 10x5 */
@@ -313,28 +335,41 @@ color:#0277bd;
 box-shadow: 0 0 10px rgba(3, 169, 244, 0.3);
 }
 
-.hot-indicator,.cold-indicator{
+/* Iconos pequeños en las esquinas - NUEVA FUNCIONALIDAD */
+.number-ball .number-icon {
 position: absolute;
-top:-5px;
-right:-5px;
+top: -5px;
+right: -5px;
 width: 16px;
 height: 16px;
 border-radius: 50%;
-font-size: 10px;
+font-size: 8px;
 display: flex;
 align-items: center;
 justify-content: center;
 font-weight: bold;
+border: 1px solid white;
 }
 
-.hot-indicator{
-background:#ff5722;
+.number-ball.hot .number-icon {
+background: #ff5722;
 color: white;
 }
 
-.cold-indicator{
-background:#03a9f4;
+.number-ball.cold .number-icon {
+background: #03a9f4;
 color: white;
+}
+
+.number-ball.excluded .number-icon {
+background: #9e9e9e;
+color: white;
+}
+
+.number-ball.random-pick .number-icon {
+background: var(--warning);
+color: white;
+border-color: #e68900;
 }
 
 .number-ball.excluded{
@@ -349,7 +384,7 @@ cursor: not-allowed;
     background: var(--warning);
     color: white;
     transform: scale(1.1);
-    border-color: var(--warning);
+    border-color: #e68900;
 }
 
 .number-ball.consejo-pick {
@@ -384,7 +419,9 @@ color: var(--primary);
 margin-bottom: 15px;
 display: flex;
 align-items: center;
+justify-content: center;
 gap: 10px;
+text-align: center;
 }
 
 .stats-grid{
@@ -444,7 +481,9 @@ color: var(--primary);
 margin-bottom: 20px;
 display: flex;
 align-items: center;
+justify-content: center;
 gap: 10px;
+text-align: center;
 }
 
 .strategy-buttons{
@@ -562,6 +601,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 gap: 10px;
+animation: generatePulse 2s infinite;
 }
 
 .generate-btn:hover{
@@ -577,6 +617,18 @@ animation: mysticGlow 3s infinite alternate;
 @keyframes mysticGlow {
   0% { box-shadow: 0 0 20px rgba(147, 51, 234, 0.3); }
   100% { box-shadow: 0 0 30px rgba(147, 51, 234, 0.8); }
+}
+
+/* NUEVA ANIMACIÓN: Latido continuo del botón generar */
+@keyframes generatePulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  }
+  50% { 
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+  }
 }
 
 .ticket{
@@ -813,7 +865,9 @@ color: var(--primary);
 margin-bottom: 20px;
 display: flex;
 align-items: center;
+justify-content: center;
 gap: 10px;
+text-align: center;
 }
 
 .saved-tickets{
@@ -1414,7 +1468,7 @@ flex-shrink: 0;
             </div>
           </div>
 
-          <button class="generate-btn" id="generateBtn"><span data-translate-key="btn_generate">🍀 Generar Combinación</span></button>
+          <button class="generate-btn" id="generateBtn"><span data-translate-key="btn_generate">🤞 Generar Combinación</span></button>
 
           <div class="ticket" id="ticket">
             <div class="ticket-header">
@@ -1649,7 +1703,7 @@ flex-shrink: 0;
         option_9_numbers: "9 números",
         option_10_numbers: "10 números",
         option_11_numbers: "11 números",
-        btn_generate: "🍀 Generar Combinación",
+        btn_generate: "🤞 Generar Combinación",
         btn_generate_consejo: "🔮 Invocar Sabiduría Ancestral",
         ticket_title: "🎫 Tu Boleto Ganador",
         btn_save: "💾 Guardar Boleto",
@@ -1735,7 +1789,7 @@ flex-shrink: 0;
         option_9_numbers: "9 numbers",
         option_10_numbers: "10 numbers",
         option_11_numbers: "11 numbers",
-        btn_generate: "🍀 Generate Combination",
+        btn_generate: "🤞 Generate Combination",
         btn_generate_consejo: "🔮 Invoke Ancient Wisdom",
         ticket_title: "🎫 Your Winning Ticket",
         btn_save: "💾 Save Ticket",
@@ -1821,7 +1875,7 @@ flex-shrink: 0;
         option_9_numbers: "9 numéros",
         option_10_numbers: "10 numéros",
         option_11_numbers: "11 numéros",
-        btn_generate: "🍀 Générer Combinaison",
+        btn_generate: "🤞 Générer Combinaison",
         btn_generate_consejo: "🔮 Invoquer Sagesse Ancestrale",
         ticket_title: "🎫 Votre Billet Gagnant",
         btn_save: "💾 Sauvegarder Billet",
@@ -1907,7 +1961,7 @@ flex-shrink: 0;
         option_9_numbers: "9 Nummern",
         option_10_numbers: "10 Nummern",
         option_11_numbers: "11 Nummern",
-        btn_generate: "🍀 Kombination erzeugen",
+        btn_generate: "🤞 Kombination erzeugen",
         btn_generate_consejo: "🔮 Uralte Weisheit anrufen",
         ticket_title: "🎫 Ihr Gewinnlos",
         btn_save: "💾 Los speichern",
@@ -2026,6 +2080,38 @@ flex-shrink: 0;
             grid.appendChild(ball);
           }
         }
+      }
+
+      // Actualizar iconos de números según su estado
+      updateNumberIcons() {
+        document.querySelectorAll('.number-ball').forEach(ball => {
+          const number = parseInt(ball.dataset.number);
+          
+          // Limpiar iconos existentes
+          const existingIcon = ball.querySelector('.number-icon');
+          if (existingIcon) {
+            existingIcon.remove();
+          }
+          
+          // Agregar icono si el número tiene un estado especial
+          let iconContent = '';
+          if (ball.classList.contains('hot')) {
+            iconContent = '🔥';
+          } else if (ball.classList.contains('cold')) {
+            iconContent = '❄';
+          } else if (ball.classList.contains('excluded')) {
+            iconContent = '🚫';
+          } else if (ball.classList.contains('random-pick')) {
+            iconContent = '🎲';
+          }
+          
+          if (iconContent) {
+            const icon = document.createElement('div');
+            icon.className = 'number-icon';
+            icon.textContent = iconContent;
+            ball.appendChild(icon);
+          }
+        });
       }
 
       // Inicialización de datos históricos
@@ -2347,7 +2433,7 @@ flex-shrink: 0;
           // Restaurar texto del botón
           const btnSpan = generateBtn.querySelector('span');
           if (btnSpan) {
-            btnSpan.textContent = translations[lang].btn_generate || '🍀 Generar Combinación';
+            btnSpan.textContent = translations[lang].btn_generate || '🤞 Generar Combinación';
           }
         }
       }
@@ -2370,6 +2456,7 @@ flex-shrink: 0;
         }
         this.calculateStats();
         this.updateClearButtonState();
+        this.updateNumberIcons(); // Actualizar iconos después de cambios
       }
 
       // Toggle de números seleccionados
@@ -2446,6 +2533,7 @@ flex-shrink: 0;
         this.updateDisplay();
         this.calculateStats();
         this.updateClearButtonState();
+        this.updateNumberIcons(); // Actualizar iconos
       }
       
       // Limpiar selecciones aleatorias
@@ -2464,6 +2552,13 @@ flex-shrink: 0;
       
       // Limpiar todas las selecciones
       clearAllSelections() {
+        // Añadir efecto shake a la papelera
+        const clearBtn = document.getElementById('clearBtn');
+        clearBtn.classList.add('shake');
+        setTimeout(() => {
+          clearBtn.classList.remove('shake');
+        }, 500);
+
         this.selectedNumbers = [];
         document.querySelectorAll('.number-ball.selected, .number-ball.random-pick, .number-ball.consejo-pick, .number-ball.hot, .number-ball.cold, .number-ball.excluded').forEach(ball => {
           ball.classList.remove('selected', 'random-pick', 'consejo-pick', 'hot', 'cold', 'excluded');
@@ -2477,6 +2572,7 @@ flex-shrink: 0;
         this.updateDisplay();
         this.calculateStats();
         this.updateClearButtonState();
+        this.updateNumberIcons(); // Actualizar iconos
       }
 
       // Actualizar estado visual del botón papelera
@@ -2512,6 +2608,8 @@ flex-shrink: 0;
             }
           }
         });
+        
+        this.updateNumberIcons(); // Actualizar iconos
       }
 
       // Manejo de clic en filtro
@@ -3774,7 +3872,7 @@ flex-shrink: 0;
         const shareText = `🎲 DataLotto 49 PRO - Análisis IA
 📅 ${new Date(this.currentTicket.date).toLocaleString('es-ES')}
 ${this.currentTicket.combinations.map((combo, index) => `${index + 1}. ${combo.join('-')}`).join('\n')}
-¡Combinación generada con IA! 🤖🍀`;
+¡Combinación generada con IA! 🤖🤞`;
 
         if(navigator.share) {
           navigator.share({ title: 'DataLotto 49 PRO - Análisis IA', text: shareText });
